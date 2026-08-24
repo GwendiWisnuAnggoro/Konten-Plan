@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konten Plan</title>
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png" type="image/png">
-
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="manifest.json">
@@ -35,14 +33,12 @@
         .page-title { font-size: 1.2rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
 
         .header-actions { display: flex; align-items: center; gap: 8px; }
-        .btn-filter-trigger, .btn-download-trigger, .btn-migrate-trigger, .btn-install-trigger {
+        .btn-filter-trigger, .btn-download-trigger, .btn-migrate-trigger {
             background: rgba(56, 189, 248, 0.1); color: var(--glow-pj); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 7px 12px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease;
         }
         .btn-download-trigger { background: rgba(168, 85, 247, 0.1); color: var(--glow-type); border-color: rgba(168, 85, 247, 0.3); }
         .btn-migrate-trigger { background: rgba(239, 68, 68, 0.1); color: var(--glow-mendesak); border-color: rgba(239, 68, 68, 0.3); width: 100%; justify-content: center; padding: 10px; margin-top: 10px; }
-        .btn-install-trigger { display: none; background: rgba(16, 185, 129, 0.1); color: #34d399; border-color: rgba(16, 185, 129, 0.3); }
-        
-        .btn-filter-trigger:hover, .btn-download-trigger:hover, .btn-migrate-trigger:hover, .btn-install-trigger:hover { filter: brightness(1.2); }
+        .btn-filter-trigger:hover, .btn-download-trigger:hover, .btn-migrate-trigger:hover { filter: brightness(1.2); }
 
         .download-dropdown-wrapper { position: relative; display: inline-block; }
         .download-menu { position: absolute; top: calc(100% + 6px); right: 0; background-color: var(--bg-card); border: 1px solid var(--border-card); border-radius: 8px; width: 150px; box-shadow: 0 10px 25px rgba(0,0,0,0.6); display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(-6px); transition: all 0.2s ease; z-index: 120; }
@@ -78,6 +74,8 @@
         .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-card); padding-bottom: 10px; gap: 10px; }
         .brand-badges-header { display: flex; gap: 8px; overflow-x: auto; max-width: 78%; scrollbar-width: none; align-items: center; }
         .brand-badges-header::-webkit-scrollbar { display: none; }
+        
+        /* Teks Brand Putih Polos */
         .brand-capsule { background: transparent; color: #ffffff; border: none; padding: 2px 0; font-size: 1rem; font-weight: 700; flex-shrink: 0; box-shadow: none; letter-spacing: 0.3px; }
         .brand-capsule.invalid { color: var(--glow-warning); }
 
@@ -142,10 +140,7 @@
             width: 100%; 
             display: block;
         }
-        .form-group select option:disabled {
-            color: #475569;
-            background-color: #0f172a;
-        }
+        .form-group select option:disabled { color: #475569; background-color: #0f172a; }
         .form-group textarea { resize: vertical; min-height: 60px; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--glow-pj); }
         
@@ -178,11 +173,76 @@
         .admin-section-title { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--border-card); padding-bottom: 6px; }
         
         #loadingStatus { text-align: center; font-size: 0.8rem; color: var(--glow-pj); font-weight: 600; display: none; }
+
+        /* PWA Mini Floating Banner */
+        .pwa-install-banner {
+            position: fixed;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            width: calc(100% - 30px);
+            max-width: 440px;
+            background: rgba(18, 24, 38, 0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(16, 185, 129, 0.2);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .pwa-install-banner.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .pwa-left-content { display: flex; align-items: center; gap: 10px; }
+        .pwa-icon-box {
+            width: 34px; height: 34px; border-radius: 8px; background: rgba(16, 185, 129, 0.15);
+            display: flex; align-items: center; justify-content: center; color: #34d399; flex-shrink: 0;
+        }
+        .pwa-text-box { display: flex; flex-direction: column; }
+        .pwa-title { font-size: 0.82rem; font-weight: 700; color: #fff; }
+        .pwa-desc { font-size: 0.7rem; color: var(--text-muted); }
+        .pwa-actions { display: flex; align-items: center; gap: 6px; }
+        .btn-pwa-install {
+            background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid var(--glow-green-btn);
+            padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-pwa-install:hover { background: var(--glow-green-btn); color: #000; }
+        .btn-pwa-close {
+            background: transparent; border: none; color: var(--text-muted); font-size: 1rem;
+            cursor: pointer; padding: 4px; display: flex; align-items: center;
+        }
     </style>
 </head>
 <body>
 
     <div id="toastContainer" class="toast-container"></div>
+
+    <!-- PWA Mini Floating Banner (Pojok Bawah) -->
+    <div id="installBanner" class="pwa-install-banner">
+        <div class="pwa-left-content">
+            <div class="pwa-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </div>
+            <div class="pwa-text-box">
+                <span class="pwa-title">Install Konten Plan</span>
+                <span class="pwa-desc">Pasang di HP agar lebih cepat</span>
+            </div>
+        </div>
+        <div class="pwa-actions">
+            <button class="btn-pwa-install" onclick="jalankanInstallPWA()">Install</button>
+            <button class="btn-pwa-close" onclick="tutupBannerPWA()">✕</button>
+        </div>
+    </div>
 
     <!-- MAIN UI (USER) -->
     <div class="sticky-top-bar">
@@ -193,11 +253,6 @@
                     Konten Plan
                 </div>
                 <div class="header-actions">
-                    <!-- Tombol Install PWA -->
-                    <button id="btnInstallApp" class="btn-install-trigger">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Install
-                    </button>
-                    
                     <div class="download-dropdown-wrapper">
                         <button class="btn-download-trigger" onclick="toggleDownloadMenu(event)">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Unduh
@@ -1264,7 +1319,7 @@
             }
         }
 
-        // --- SISTEM PWA ---
+        // --- SISTEM PWA BANNER BAWAH ---
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(err => console.log('SW Registration failed:', err));
@@ -1272,28 +1327,39 @@
         }
 
         let deferredPrompt;
-        const btnInstallApp = document.getElementById('btnInstallApp');
+        const banner = document.getElementById('installBanner');
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            if(btnInstallApp) btnInstallApp.style.display = 'flex';
+            // Cek apakah user sudah pernah menutup banner di sesi ini
+            const isDismissed = sessionStorage.getItem('pwa_prompt_dismissed');
+            if (!isDismissed && banner) {
+                setTimeout(() => {
+                    banner.classList.add('show');
+                }, 1500); // Muncul 1.5 detik setelah web terbuka
+            }
         });
 
-        if(btnInstallApp) {
-            btnInstallApp.addEventListener('click', async () => {
-                if (!deferredPrompt) return;
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    btnInstallApp.style.display = 'none';
-                }
-                deferredPrompt = null;
-            });
+        async function jalankanInstallPWA() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                banner.classList.remove('show');
+            }
+            deferredPrompt = null;
+        }
+
+        function tutupBannerPWA() {
+            if (banner) {
+                banner.classList.remove('show');
+                sessionStorage.setItem('pwa_prompt_dismissed', 'true');
+            }
         }
 
         window.addEventListener('appinstalled', () => {
-            if(btnInstallApp) btnInstallApp.style.display = 'none';
+            if (banner) banner.classList.remove('show');
             showToast("Sukses", "Aplikasi terinstall di layar utama!", "success");
         });
 
