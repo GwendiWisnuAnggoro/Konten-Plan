@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HADDOCK</title>
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png" type="image/png">
-
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png" type="image/png">
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="manifest.json">
@@ -13,6 +12,9 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png">
+
+    <!-- Library untuk Generate File Excel Berwarna + Dropdown (ExcelJS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
@@ -77,7 +79,6 @@
         .brand-badges-header { display: flex; gap: 8px; overflow-x: auto; max-width: 78%; scrollbar-width: none; align-items: center; }
         .brand-badges-header::-webkit-scrollbar { display: none; }
         
-        /* Teks Brand Putih Polos */
         .brand-capsule { background: transparent; color: #ffffff; border: none; padding: 2px 0; font-size: 1rem; font-weight: 700; flex-shrink: 0; box-shadow: none; letter-spacing: 0.3px; }
         .brand-capsule.invalid { color: var(--glow-warning); }
 
@@ -178,32 +179,14 @@
 
         /* PWA Mini Floating Banner */
         .pwa-install-banner {
-            position: fixed;
-            bottom: 18px;
-            left: 50%;
-            transform: translateX(-50%) translateY(120px);
-            width: calc(100% - 30px);
-            max-width: 440px;
-            background: rgba(18, 24, 38, 0.96);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            border-radius: 12px;
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
+            position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%) translateY(120px);
+            width: calc(100% - 30px); max-width: 440px; background: rgba(18, 24, 38, 0.96); backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 12px; padding: 10px 14px;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(16, 185, 129, 0.2);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 999; opacity: 0; pointer-events: none; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .pwa-install-banner.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .pwa-install-banner.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
         .pwa-left-content { display: flex; align-items: center; gap: 10px; }
         .pwa-icon-box {
             width: 34px; height: 34px; border-radius: 8px; background: rgba(16, 185, 129, 0.15);
@@ -215,8 +198,7 @@
         .pwa-actions { display: flex; align-items: center; gap: 6px; }
         .btn-pwa-install {
             background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid var(--glow-green-btn);
-            padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer;
-            transition: all 0.2s;
+            padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
         }
         .btn-pwa-install:hover { background: var(--glow-green-btn); color: #000; }
         .btn-pwa-close {
@@ -228,6 +210,20 @@
 <body>
 
     <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Custom Confirm Modal -->
+    <div id="customConfirmModal" class="modal-overlay" style="z-index: 2000;">
+        <div class="modal-content" style="max-width: 320px; text-align: center; gap: 20px; padding: 25px 20px; align-items: center;">
+            <div style="color: var(--glow-mendesak); display: flex; justify-content: center;">
+                <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <div id="customConfirmMessage" style="font-size: 0.95rem; font-weight: 500; color: #e2e8f0; line-height: 1.5;">Apakah Anda yakin?</div>
+            <div style="display: flex; gap: 12px; justify-content: center; width: 100%; margin-top: 5px;">
+                <button class="btn-cancel" onclick="tutupCustomConfirm()" style="flex: 1; padding: 10px;">Batal</button>
+                <button id="btnConfirmAction" class="btn-save" style="flex: 1; padding: 10px; background: var(--glow-mendesak); color: #fff; box-shadow: 0 0 12px rgba(239, 68, 68, 0.4); justify-content: center;">Ya, Yakin</button>
+            </div>
+        </div>
+    </div>
 
     <!-- PWA Mini Floating Banner (Pojok Bawah) -->
     <div id="installBanner" class="pwa-install-banner">
@@ -559,6 +555,22 @@
 
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
 
+        // --- SISTEM CUSTOM CONFIRM MODAL ---
+        let confirmActionCallback = null;
+        function showCustomConfirm(message, callback) {
+            document.getElementById('customConfirmMessage').innerText = message;
+            confirmActionCallback = callback;
+            document.getElementById('customConfirmModal').classList.add('active');
+        }
+        function tutupCustomConfirm() {
+            document.getElementById('customConfirmModal').classList.remove('active');
+            confirmActionCallback = null;
+        }
+        document.getElementById('btnConfirmAction').addEventListener('click', () => {
+            if (confirmActionCallback) confirmActionCallback();
+            tutupCustomConfirm();
+        });
+
         function initColDropdowns() {
             ['mainMappingContainer', 'migMappingContainer'].forEach(containerId => {
                 const container = document.getElementById(containerId);
@@ -858,36 +870,180 @@
         }
 
         async function jalankanMigrasi(e) {
-            if(!confirm("Anda yakin ingin migrasi? Data akan disalin ke Spreadsheet baru.")) return;
-            const btn = e.target; btn.innerText = "Memigrasi...";
-            
-            const newConfig = buildConfigPayload(true);
-            if(!newConfig.spreadsheetUrl || !newConfig.sheetName) { btn.innerText="Jalankan Migrasi"; return showToast("Gagal", "Lengkapi Link & Sheet Tujuan", "error");}
+            showCustomConfirm("Anda yakin ingin migrasi? Data akan disalin ke Spreadsheet baru.", async () => {
+                const btn = e.target; btn.innerText = "Memigrasi...";
+                
+                const newConfig = buildConfigPayload(true);
+                if(!newConfig.spreadsheetUrl || !newConfig.sheetName) { btn.innerText="Jalankan Migrasi"; return showToast("Gagal", "Lengkapi Link & Sheet Tujuan", "error");}
 
-            const res = await fetchAPI('migrateData', {config: newConfig});
-            btn.innerText = "Jalankan Migrasi";
-            if (res && res.status === 'success') {
-                masterConfig = newConfig;
-                showToast("Migrasi Berhasil", "Data berhasil dipindahkan.", "success");
-                updateFilterOptions();
-                tutupAdmin();
-                pollData();
-            } else {
-                showToast("Gagal Migrasi", res ? res.message : "Kesalahan server", "error");
-            }
+                const res = await fetchAPI('migrateData', {config: newConfig});
+                btn.innerText = "Jalankan Migrasi";
+                if (res && res.status === 'success') {
+                    masterConfig = newConfig;
+                    showToast("Migrasi Berhasil", "Data berhasil dipindahkan.", "success");
+                    updateFilterOptions();
+                    tutupAdmin();
+                    pollData();
+                } else {
+                    showToast("Gagal Migrasi", res ? res.message : "Kesalahan server", "error");
+                }
+            });
         }
 
         function toggleDownloadMenu(e) { e.stopPropagation(); document.getElementById('downloadMenu').classList.toggle('show'); }
         document.addEventListener('click', () => { document.getElementById('downloadMenu').classList.remove('show'); });
 
+        // --- SISTEM DOWNLOAD FRONTEND (EXCELJS + CSV) ---
+        function formatTanggalMurni(isoString) {
+            if (!isoString) return "-";
+            const dateObj = new Date(isoString.replace(' ', 'T'));
+            if (isNaN(dateObj.getTime())) return "-";
+            const tgl = dateObj.getDate();
+            const bln = dateObj.toLocaleDateString('id-ID', { month: 'long' });
+            const thn = dateObj.getFullYear();
+            return `${tgl} ${bln} ${thn}`; // Text manual (ex: 24 Agustus 2026)
+        }
+
+        function exportToCSV(data) {
+            const headers = ["Brand", "Status", "PIC", "Tipe Konten", "Platform", "Deadline", "Link", "Catatan"];
+            let csvContent = headers.join(",") + "\n";
+            
+            data.forEach(d => {
+                let row = [
+                    `"${d.brand.join(', ')}"`,
+                    `"${d.status}"`,
+                    `"${d.penanggungJawab.join(', ')}"`,
+                    `"${d.tipeKonten}"`,
+                    `"${d.platform.join(', ')}"`,
+                    `"${formatTanggalMurni(d.deadline)}"`,
+                    `"${d.link}"`,
+                    `"${(d.catatan||"").replace(/"/g, '""')}"`
+                ];
+                csvContent += row.join(",") + "\n";
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `KontenPlan_${new Date().getTime()}.csv`);
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        async function exportToExcel(data) {
+            if (typeof ExcelJS === 'undefined') {
+                return showToast("Gagal", "Library Excel gagal dimuat, cek koneksi internet.", "error");
+            }
+            
+            const wb = new ExcelJS.Workbook();
+            const ws = wb.addWorksheet("Data Konten");
+
+            // Setup Lebar Kolom
+            ws.columns = [
+                { header: 'Brand', key: 'brand', width: 25 },
+                { header: 'Status', key: 'status', width: 20 },
+                { header: 'PIC', key: 'pic', width: 20 },
+                { header: 'Tipe Konten', key: 'tipe', width: 22 },
+                { header: 'Platform', key: 'platform', width: 22 },
+                { header: 'Deadline', key: 'deadline', width: 25 },
+                { header: 'Link', key: 'link', width: 40 },
+                { header: 'Catatan', key: 'catatan', width: 40 }
+            ];
+
+            // Styling Header (Baris 1)
+            ws.getRow(1).eachCell((cell) => {
+                cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF121826' } };
+                cell.font = { color: { argb: 'FF38BDF8' }, bold: true, size: 12 };
+                cell.alignment = { vertical: 'middle', horizontal: 'center' };
+                cell.border = {
+                    top: { style: 'medium', color: { argb: 'FF38BDF8' } },
+                    bottom: { style: 'medium', color: { argb: 'FF38BDF8' } },
+                    left: { style: 'thin', color: { argb: 'FF38BDF8' } },
+                    right: { style: 'thin', color: { argb: 'FF38BDF8' } }
+                };
+            });
+
+            // Isi Data
+            data.forEach(d => {
+                ws.addRow({
+                    brand: d.brand.join(', '),
+                    status: d.status,
+                    pic: d.penanggungJawab.join(', '),
+                    tipe: d.tipeKonten,
+                    platform: d.platform.join(', '),
+                    deadline: formatTanggalMurni(d.deadline), // Format Tanpa Jam
+                    link: d.link,
+                    catatan: d.catatan
+                });
+            });
+
+            // Set Dropdown Validations (Sesuai Konfigurasi Admin)
+            const brandList = masterConfig.brands.length > 0 ? `"${masterConfig.brands.join(',')}"` : "";
+            const statusList = `"${[...(masterConfig.userStatuses || []), masterConfig.systemStatusMendesak || 'mendesak', masterConfig.systemStatusTerlambat || 'terlambat'].join(',')}"`;
+            const picList = masterConfig.pics.length > 0 ? `"${masterConfig.pics.join(',')}"` : "";
+
+            const totalRows = data.length + 1;
+            for (let i = 2; i <= totalRows; i++) {
+                const row = ws.getRow(i);
+                
+                row.eachCell({ includeEmpty: true }, (cell) => {
+                    cell.border = {
+                        top: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                        left: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                        bottom: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                        right: { style: 'thin', color: { argb: 'FFCCCCCC' } }
+                    };
+                    cell.alignment = { vertical: 'middle', wrapText: true };
+                });
+
+                if (brandList) {
+                    ws.getCell(`A${i}`).dataValidation = {
+                        type: 'list', allowBlank: true, formulae: [brandList], showErrorMessage: true
+                    };
+                }
+                if (statusList) {
+                    ws.getCell(`B${i}`).dataValidation = {
+                        type: 'list', allowBlank: true, formulae: [statusList], showErrorMessage: true
+                    };
+                }
+                if (picList) {
+                    ws.getCell(`C${i}`).dataValidation = {
+                        type: 'list', allowBlank: true, formulae: [picList], showErrorMessage: true
+                    };
+                }
+            }
+
+            // Unduh file secara otomatis ke HP/Laptop
+            const buffer = await wb.xlsx.writeBuffer();
+            const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `KontenPlan_${new Date().getTime()}.xlsx`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
         async function triggerDownload(format) {
             document.getElementById('downloadMenu').classList.remove('show');
-            showToast("Mempersiapkan File", "Generasi Excel berwarna dengan Filter...", "success");
+            const filteredData = contentPlans.filter(filterLogic);
             
-            const filteredIds = contentPlans.filter(filterLogic).map(d => d.id.toString());
-            const res = await fetchAPI(`downloadFile&format=${format}`, { ids: filteredIds });
-            if(res && res.url) window.location.href = res.url;
-            else showToast("Gagal", "Kesalahan generate spreadsheet", "error");
+            if (filteredData.length === 0) {
+                return showToast("Gagal", "Tidak ada data untuk diunduh (terlalu banyak filter).", "error");
+            }
+
+            showToast("Mempersiapkan File", "Mengunduh data Excel berwarna...", "success");
+
+            if (format === 'csv') {
+                exportToCSV(filteredData);
+            } else {
+                await exportToExcel(filteredData);
+            }
         }
 
         function updateFilterOptions() {
@@ -1159,11 +1315,12 @@
             });
         }
 
-        async function hapusData(id) {
-            if(!confirm("Hapus baris ini dari spreadsheet?")) return;
-            showToast("Menghapus...", "Mohon tunggu", "success");
-            await fetchAPI('deleteData', { row: id });
-            await pollData();
+        function hapusData(id) {
+            showCustomConfirm("Hapus baris ini dari spreadsheet?", async () => {
+                showToast("Menghapus...", "Mohon tunggu", "success");
+                await fetchAPI('deleteData', { row: id });
+                await pollData();
+            });
         }
 
         function refreshModalFormDropdownsSafe() {
@@ -1334,12 +1491,9 @@
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            // Cek apakah user sudah pernah menutup banner di sesi ini
             const isDismissed = sessionStorage.getItem('pwa_prompt_dismissed');
             if (!isDismissed && banner) {
-                setTimeout(() => {
-                    banner.classList.add('show');
-                }, 1500); // Muncul 1.5 detik setelah web terbuka
+                setTimeout(() => { banner.classList.add('show'); }, 1500); 
             }
         });
 
