@@ -1,1 +1,850 @@
-const a0_0xafc97f=a0_0x7b4d;(function(_0xb6d80b,_0x4614b4){const _0x1b131f=a0_0x7b4d,_0x4acafa=_0xb6d80b();while(!![]){try{const _0x2fa519=-parseInt(_0x1b131f(0x200))/0x1*(-parseInt(_0x1b131f(0x1cb))/0x2)+-parseInt(_0x1b131f(0x225))/0x3+parseInt(_0x1b131f(0x16e))/0x4+parseInt(_0x1b131f(0x22f))/0x5*(parseInt(_0x1b131f(0x144))/0x6)+parseInt(_0x1b131f(0x189))/0x7+parseInt(_0x1b131f(0x185))/0x8*(parseInt(_0x1b131f(0xf0))/0x9)+-parseInt(_0x1b131f(0xfc))/0xa*(parseInt(_0x1b131f(0x18e))/0xb);if(_0x2fa519===_0x4614b4)break;else _0x4acafa['push'](_0x4acafa['shift']());}catch(_0x3ed17f){_0x4acafa['push'](_0x4acafa['shift']());}}}(a0_0x1a6b,0x4141c));const API_KEY=a0_0xafc97f(0x11e),WEB_APP_URLS=[a0_0xafc97f(0x195)];let currentEndpointIndex=0x0,masterConfig={'brands':[],'userStatuses':[{'name':a0_0xafc97f(0x1f0),'role':a0_0xafc97f(0x247)},{'name':a0_0xafc97f(0x21b),'role':'on-progress'},{'name':a0_0xafc97f(0x123),'role':a0_0xafc97f(0x22a)}],'systemStatusMendesak':a0_0xafc97f(0x186),'systemStatusTerlambat':a0_0xafc97f(0x14c),'pics':[],'tipes':[],'platforms':[],'spreadsheetUrl':'','sheetName':'','startRow':0x2,'columns':{'brand':0x1,'status':0x2,'pic':0x3,'tipe':0x4,'platform':0x5,'deadline':0x6,'link':0x7,'catatan':0x8}},contentPlans=[],configHash='',dataHash='';const alphabet=a0_0xafc97f(0x1a9)['split']('');let confirmActionCallback=null;function showCustomConfirm(_0x5188dc,_0x18ddfc){const _0x12bfe1=a0_0xafc97f;document[_0x12bfe1(0x203)](_0x12bfe1(0x211))['innerText']=_0x5188dc,confirmActionCallback=_0x18ddfc,document['getElementById'](_0x12bfe1(0x179))['classList']['add'](_0x12bfe1(0x223));}function tutupCustomConfirm(){const _0xbc03c6=a0_0xafc97f;document['getElementById'](_0xbc03c6(0x179))[_0xbc03c6(0x10f)][_0xbc03c6(0x207)]('active'),confirmActionCallback=null;}document[a0_0xafc97f(0x203)](a0_0xafc97f(0x127))[a0_0xafc97f(0x234)]('click',()=>{if(confirmActionCallback)confirmActionCallback();tutupCustomConfirm();});function initColDropdowns(){const _0x5db8d5=a0_0xafc97f;[_0x5db8d5(0x1ed),_0x5db8d5(0x1d8)][_0x5db8d5(0x17f)](_0x235abc=>{const _0xb6dd40=_0x5db8d5,_0x2a4f00=document[_0xb6dd40(0x203)](_0x235abc);if(!_0x2a4f00)return;const _0x599d37=_0x2a4f00['querySelectorAll'](_0xb6dd40(0x1e1));_0x599d37[_0xb6dd40(0x17f)]((_0x1a3067,_0x371b23)=>{const _0x1f5cd0=_0xb6dd40;_0x1a3067[_0x1f5cd0(0x1cf)]='',alphabet[_0x1f5cd0(0x17f)]((_0x4c26a7,_0x33fd88)=>{const _0x5082d5=_0x1f5cd0;_0x1a3067[_0x5082d5(0x1cf)]+=_0x5082d5(0x17d)+(_0x33fd88+0x1)+_0x5082d5(0x147)+_0x4c26a7+_0x5082d5(0xf8);}),_0x1a3067['value']=(_0x371b23+0x1)['toString'](),_0x1a3067['onchange']=()=>refreshMappingDropdowns(_0x235abc);}),refreshMappingDropdowns(_0x235abc);});}function refreshMappingDropdowns(_0x15e7bf){const _0x2f771b=a0_0xafc97f,_0xbbc13f=document[_0x2f771b(0x203)](_0x15e7bf);if(!_0xbbc13f)return;const _0x5332d7=Array[_0x2f771b(0x214)](_0xbbc13f[_0x2f771b(0xea)](_0x2f771b(0x1e1))),_0xcbbe7=_0x5332d7['map'](_0xb19fe1=>_0xb19fe1[_0x2f771b(0x10a)]);_0x5332d7['forEach'](_0x2ea3b4=>{const _0x2d316a=_0x2f771b,_0x18e38f=_0x2ea3b4[_0x2d316a(0x10a)];Array['from'](_0x2ea3b4[_0x2d316a(0x1ae)])[_0x2d316a(0x17f)](_0x1c04d4=>{const _0x81a998=_0x2d316a;_0x1c04d4[_0x81a998(0xf4)]=_0x1c04d4[_0x81a998(0x10a)]!==_0x18e38f&&_0xcbbe7[_0x81a998(0x192)](_0x1c04d4[_0x81a998(0x10a)]);});});}initColDropdowns();async function fetchAPI(_0x28ad37,_0x119c0c=null){const _0x462b15=a0_0xafc97f;let _0x1c6412=0x0;while(_0x1c6412<WEB_APP_URLS[_0x462b15(0x244)]){try{let _0x2d952a=WEB_APP_URLS[currentEndpointIndex]+_0x462b15(0x1f6)+_0x28ad37+_0x462b15(0x197)+API_KEY;if(_0x119c0c)_0x119c0c[_0x462b15(0xf5)]=API_KEY;let _0x397ce3=_0x119c0c?{'method':_0x462b15(0x1d4),'body':JSON[_0x462b15(0x16c)](_0x119c0c)}:{};const _0x2823a3=await fetch(_0x2d952a,_0x397ce3),_0x4156b5=await _0x2823a3[_0x462b15(0x24a)]();if(_0x4156b5[_0x462b15(0x15f)]==='error'&&_0x4156b5[_0x462b15(0x117)]===_0x462b15(0x1a7))throw new Error(_0x462b15(0x1e9));return _0x4156b5;}catch(_0x4023f1){console[_0x462b15(0x12b)]('Endpoint\x20Index\x20'+currentEndpointIndex+'\x20Gagal',_0x4023f1),currentEndpointIndex=(currentEndpointIndex+0x1)%WEB_APP_URLS['length'],_0x1c6412++;}}return null;}async function initApp(){const _0x2133d9=a0_0xafc97f;document[_0x2133d9(0x203)](_0x2133d9(0x1e7))['style'][_0x2133d9(0x24b)]=_0x2133d9(0x1b0),await pollData(),setInterval(pollData,0x1388);}async function pollData(){const _0x1712a0=a0_0xafc97f,_0x5d079c=await fetchAPI(_0x1712a0(0x1ff));if(_0x5d079c&&_0x5d079c[_0x1712a0(0x20b)]&&_0x5d079c['data']){const _0x4e7033=JSON[_0x1712a0(0x16c)](_0x5d079c[_0x1712a0(0x20b)]),_0x44655a=JSON[_0x1712a0(0x16c)](_0x5d079c[_0x1712a0(0x227)]);_0x4e7033!==configHash&&(masterConfig=_0x5d079c[_0x1712a0(0x20b)],configHash=_0x4e7033,updateFilterOptions(),_0x5d079c['ssName']&&document[_0x1712a0(0x203)](_0x1712a0(0x109))['getAttribute'](_0x1712a0(0x1b2))!==_0x1712a0(0x178)&&(document[_0x1712a0(0x203)](_0x1712a0(0x109))[_0x1712a0(0x10a)]=_0x5d079c['ssName'],document[_0x1712a0(0x203)](_0x1712a0(0x109))[_0x1712a0(0x177)][_0x1712a0(0x11d)]=_0x1712a0(0x113)),document[_0x1712a0(0x203)](_0x1712a0(0x1e4))[_0x1712a0(0x10f)][_0x1712a0(0x1a5)](_0x1712a0(0x223))&&refreshModalFormDropdownsSafe()),_0x44655a!==dataHash&&(contentPlans=_0x5d079c['data'],dataHash=_0x44655a,renderContent()),document[_0x1712a0(0x203)]('loadingStatus')[_0x1712a0(0x177)]['display']=_0x1712a0(0x248);}}function showToast(_0x5ea2f4,_0x1d8caa,_0x475c7f='success'){const _0x3baeb5=a0_0xafc97f,_0x319514=document[_0x3baeb5(0x203)](_0x3baeb5(0x10d)),_0x172ecf=document[_0x3baeb5(0x1fa)](_0x3baeb5(0x1a8));_0x172ecf[_0x3baeb5(0x1a2)]=_0x3baeb5(0x228)+_0x475c7f;const _0x54a105=_0x475c7f==='success'?'<svg\x20class=\x22toast-icon\x22\x20width=\x2220\x22\x20height=\x2220\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222.5\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22><path\x20d=\x22M22\x2011.08V12a10\x2010\x200\x201\x201-5.93-9.14\x22></path><polyline\x20points=\x2222\x204\x2012\x2014.01\x209\x2011.01\x22></polyline></svg>':'<svg\x20class=\x22toast-icon\x22\x20width=\x2220\x22\x20height=\x2220\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222.5\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22><circle\x20cx=\x2212\x22\x20cy=\x2212\x22\x20r=\x2210\x22></circle><line\x20x1=\x2215\x22\x20y1=\x229\x22\x20x2=\x229\x22\x20y2=\x2215\x22></line><line\x20x1=\x229\x22\x20y1=\x229\x22\x20x2=\x2215\x22\x20y2=\x2215\x22></line></svg>';_0x172ecf[_0x3baeb5(0x1cf)]=_0x54a105+_0x3baeb5(0x101)+_0x5ea2f4+_0x3baeb5(0x1f9)+_0x1d8caa+_0x3baeb5(0x128),_0x319514[_0x3baeb5(0x23e)](_0x172ecf),requestAnimationFrame(()=>_0x172ecf['classList'][_0x3baeb5(0x115)]('show')),setTimeout(()=>{const _0x23123b=_0x3baeb5;_0x172ecf['classList'][_0x23123b(0x207)](_0x23123b(0x134)),setTimeout(()=>_0x172ecf[_0x23123b(0x207)](),0x190);},0xdac);}function isValidUrl(_0x4a4411){const _0x288384=a0_0xafc97f;try{const _0x43c5ec=new URL(_0x4a4411);return _0x43c5ec[_0x288384(0x24d)]==='http:'||_0x43c5ec['protocol']==='https:';}catch(_0x28fdb8){return![];}}function handleSearch(){const _0x393a9f=a0_0xafc97f,_0xa4c394=document[_0x393a9f(0x203)](_0x393a9f(0x1d7));_0xa4c394[_0x393a9f(0x10a)]===_0x393a9f(0x206)?(bukaAdmin(),_0xa4c394[_0x393a9f(0x10a)]=''):renderContent();}function handleUrlInput(){const _0x527a42=a0_0xafc97f,_0x4b580f=document['getElementById'](_0x527a42(0x109)),_0x29bab8=document[_0x527a42(0x203)](_0x527a42(0x20f));_0x29bab8[_0x527a42(0x10a)]=_0x4b580f[_0x527a42(0x10a)],_0x4b580f[_0x527a42(0x177)][_0x527a42(0x11d)]=_0x527a42(0x107),_0x4b580f['setAttribute']('data-modified','true'),validateAdminSaveButton();}function addAdminListInput(_0x3f7b40,_0xb5f46d=''){const _0x53ca78=a0_0xafc97f,_0xf56d78=document['getElementById'](_0x3f7b40),_0xa54eaa=document[_0x53ca78(0x1fa)](_0x53ca78(0x1a8));_0xa54eaa['className']=_0x53ca78(0x130);const _0x497322=document[_0x53ca78(0x1fa)](_0x53ca78(0x1f8));_0x497322['type']='text',_0x497322[_0x53ca78(0x10a)]=_0xb5f46d,_0x497322['oninput']=validateAdminSaveButton;const _0x5c4bcf=document[_0x53ca78(0x1fa)](_0x53ca78(0x116));_0x5c4bcf[_0x53ca78(0x1a2)]='btn-remove-item',_0x5c4bcf[_0x53ca78(0x1cf)]=_0x53ca78(0x1e2),_0x5c4bcf['onclick']=()=>{const _0x469f99=_0x53ca78;_0xf56d78[_0x469f99(0x1c8)]['length']>0x1?(_0xa54eaa[_0x469f99(0x207)](),validateAdminSaveButton()):showToast('Peringatan','Minimal\x20harus\x20ada\x201\x20pilihan.',_0x469f99(0x12b));},_0xa54eaa[_0x53ca78(0x23e)](_0x497322),_0xa54eaa[_0x53ca78(0x23e)](_0x5c4bcf),_0xf56d78[_0x53ca78(0x23e)](_0xa54eaa),validateAdminSaveButton();}function addAdminStatusInput(_0x20709a,_0x2cc4d2){const _0x420a5f=a0_0xafc97f,_0x4b1157=document[_0x420a5f(0x203)](_0x20709a),_0x17ab54=document[_0x420a5f(0x1fa)](_0x420a5f(0x1a8));_0x17ab54[_0x420a5f(0x1a2)]=_0x420a5f(0x130);const _0x283216=typeof _0x2cc4d2==='string'?_0x2cc4d2['toUpperCase']():_0x2cc4d2?_0x2cc4d2['name']['toUpperCase']():'';let _0x27bddd=_0x420a5f(0x196);if(typeof _0x2cc4d2===_0x420a5f(0x220)){if(_0x2cc4d2[_0x420a5f(0x122)]()==='to-do')_0x27bddd=_0x420a5f(0x247);if(_0x2cc4d2[_0x420a5f(0x122)]()===_0x420a5f(0x22a))_0x27bddd='selesai';}else _0x2cc4d2&&_0x2cc4d2[_0x420a5f(0x21d)]&&(_0x27bddd=_0x2cc4d2['role'][_0x420a5f(0x122)]());const _0x971c8=document[_0x420a5f(0x1fa)](_0x420a5f(0x1f8));_0x971c8[_0x420a5f(0x1af)]=_0x420a5f(0x140),_0x971c8[_0x420a5f(0x10a)]=_0x283216,_0x971c8[_0x420a5f(0x13f)]='NAMA\x20STATUS',_0x971c8['style']['flex']='1',_0x971c8[_0x420a5f(0xfb)]=function(){const _0x52f3ec=_0x420a5f;this['value']=this[_0x52f3ec(0x10a)][_0x52f3ec(0x1b4)](),validateAdminSaveButton();};const _0x1cca50=document[_0x420a5f(0x1fa)](_0x420a5f(0x1e1));_0x1cca50[_0x420a5f(0x177)][_0x420a5f(0x13c)]='1',_0x1cca50[_0x420a5f(0x1cf)]=_0x420a5f(0x1c2)+(_0x27bddd===_0x420a5f(0x247)?_0x420a5f(0xeb):'')+_0x420a5f(0x167)+(_0x27bddd===_0x420a5f(0x196)?'selected':'')+'>Sifat:\x20On-Progress\x20(Countdown)</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22selesai\x22\x20'+(_0x27bddd===_0x420a5f(0x22a)?_0x420a5f(0xeb):'')+_0x420a5f(0x14d),_0x1cca50['onchange']=validateAdminSaveButton;const _0x165a6e=document[_0x420a5f(0x1fa)](_0x420a5f(0x116));_0x165a6e['className']=_0x420a5f(0x1cc),_0x165a6e[_0x420a5f(0x1cf)]=_0x420a5f(0x1e2),_0x165a6e[_0x420a5f(0x224)]=()=>{const _0x58874a=_0x420a5f;_0x4b1157[_0x58874a(0x1c8)][_0x58874a(0x244)]>0x1?(_0x17ab54[_0x58874a(0x207)](),validateAdminSaveButton()):showToast(_0x58874a(0x236),_0x58874a(0x1dc),_0x58874a(0x12b));},_0x17ab54[_0x420a5f(0x23e)](_0x971c8),_0x17ab54[_0x420a5f(0x23e)](_0x1cca50),_0x17ab54[_0x420a5f(0x23e)](_0x165a6e),_0x4b1157[_0x420a5f(0x23e)](_0x17ab54),validateAdminSaveButton();}function a0_0x7b4d(_0x20a792,_0x4d0411){_0x20a792=_0x20a792-0xea;const _0x1a6b27=a0_0x1a6b();let _0x7b4d9e=_0x1a6b27[_0x20a792];return _0x7b4d9e;}function getRoleForStatus(_0x4045dd){const _0x46fe8a=a0_0xafc97f;if(!_0x4045dd)return _0x46fe8a(0x196);if(!masterConfig[_0x46fe8a(0x163)]||masterConfig[_0x46fe8a(0x163)]['length']===0x0)return _0x46fe8a(0x196);if(typeof masterConfig[_0x46fe8a(0x163)][0x0]==='string'){const _0x25bd39=_0x4045dd['toLowerCase']();if(_0x25bd39===_0x46fe8a(0x247))return _0x46fe8a(0x247);if(_0x25bd39===_0x46fe8a(0x22a))return _0x46fe8a(0x22a);return _0x46fe8a(0x196);}const _0x3fe5ec=masterConfig[_0x46fe8a(0x163)][_0x46fe8a(0x136)](_0xf708c9=>_0xf708c9[_0x46fe8a(0x1e3)]&&_0xf708c9[_0x46fe8a(0x1e3)]['toUpperCase']()===_0x4045dd[_0x46fe8a(0x1b4)]());return _0x3fe5ec?(_0x3fe5ec[_0x46fe8a(0x21d)]||'on-progress')[_0x46fe8a(0x122)]():_0x46fe8a(0x196);}function populateAdminList(_0x157bd2,_0x23cb7c){const _0x4e5d76=a0_0xafc97f;document[_0x4e5d76(0x203)](_0x157bd2)[_0x4e5d76(0x1cf)]='',(_0x23cb7c||[])[_0x4e5d76(0x17f)](_0x3e436c=>addAdminListInput(_0x157bd2,_0x3e436c));if(!_0x23cb7c||_0x23cb7c[_0x4e5d76(0x244)]===0x0)addAdminListInput(_0x157bd2);}function validateAdminSaveButton(){const _0x11717a=a0_0xafc97f,_0x1821a4=document['getElementById'](_0x11717a(0x1eb));if(!_0x1821a4)return;const _0x2bfc82=document[_0x11717a(0x203)](_0x11717a(0x20f))[_0x11717a(0x10a)][_0x11717a(0x10e)](),_0x410f08=document[_0x11717a(0x203)]('adminSheetName')['value']['trim'](),_0x1b904a=parseInt(document[_0x11717a(0x203)](_0x11717a(0xed))['value']),_0x4b3a5c=document[_0x11717a(0x203)](_0x11717a(0x17b))['value'][_0x11717a(0x10e)](),_0x553feb=document[_0x11717a(0x203)](_0x11717a(0x20d))[_0x11717a(0x10a)][_0x11717a(0x10e)]();!_0x2bfc82||!_0x410f08||!_0x4b3a5c||!_0x553feb||isNaN(_0x1b904a)||_0x1b904a<0x2?_0x1821a4['disabled']=!![]:_0x1821a4[_0x11717a(0xf4)]=![];}function bukaAdmin(){const _0x3ed095=a0_0xafc97f;document[_0x3ed095(0x203)](_0x3ed095(0x1ce))[_0x3ed095(0x10f)][_0x3ed095(0x115)](_0x3ed095(0x223)),document[_0x3ed095(0x203)](_0x3ed095(0x193))[_0x3ed095(0x177)][_0x3ed095(0x24b)]=_0x3ed095(0x1b0),document[_0x3ed095(0x203)]('adminMigrationView')['style'][_0x3ed095(0x24b)]='none',document[_0x3ed095(0x203)](_0x3ed095(0x20f))[_0x3ed095(0x10a)]=masterConfig[_0x3ed095(0x208)]||'',document['getElementById'](_0x3ed095(0x109))[_0x3ed095(0x10a)]=masterConfig[_0x3ed095(0x208)]||'',document[_0x3ed095(0x203)](_0x3ed095(0x109))[_0x3ed095(0x177)][_0x3ed095(0x11d)]='#fff',document[_0x3ed095(0x203)](_0x3ed095(0x109))['setAttribute'](_0x3ed095(0x1b2),_0x3ed095(0x222)),document[_0x3ed095(0x203)](_0x3ed095(0xed))[_0x3ed095(0x10a)]=Math['max'](parseInt(masterConfig['startRow'])||0x2,0x2);const _0x2f5c54=masterConfig[_0x3ed095(0x172)]||{'brand':0x1,'status':0x2,'pic':0x3,'tipe':0x4,'platform':0x5,'deadline':0x6,'link':0x7,'catatan':0x8};document[_0x3ed095(0x203)](_0x3ed095(0x24c))[_0x3ed095(0x10a)]=_0x2f5c54[_0x3ed095(0x22e)],document['getElementById'](_0x3ed095(0x238))[_0x3ed095(0x10a)]=_0x2f5c54[_0x3ed095(0x15f)],document['getElementById'](_0x3ed095(0x19d))[_0x3ed095(0x10a)]=_0x2f5c54[_0x3ed095(0x15a)],document[_0x3ed095(0x203)](_0x3ed095(0x1bf))['value']=_0x2f5c54[_0x3ed095(0x255)],document['getElementById'](_0x3ed095(0x1b1))['value']=_0x2f5c54[_0x3ed095(0x18d)],document[_0x3ed095(0x203)](_0x3ed095(0x19a))['value']=_0x2f5c54[_0x3ed095(0x23d)],document['getElementById'](_0x3ed095(0x23f))[_0x3ed095(0x10a)]=_0x2f5c54['link'],document[_0x3ed095(0x203)](_0x3ed095(0x165))[_0x3ed095(0x10a)]=_0x2f5c54[_0x3ed095(0x152)],refreshMappingDropdowns(_0x3ed095(0x1ed)),document['getElementById'](_0x3ed095(0x17b))[_0x3ed095(0x10a)]=masterConfig[_0x3ed095(0x13e)]||_0x3ed095(0x186),document['getElementById']('adminStatusTerlambat')[_0x3ed095(0x10a)]=masterConfig['systemStatusTerlambat']||_0x3ed095(0x14c),populateAdminList(_0x3ed095(0xfa),masterConfig[_0x3ed095(0x213)]),populateAdminList(_0x3ed095(0x1bb),masterConfig[_0x3ed095(0x11a)]),populateAdminList('adminListTipes',masterConfig[_0x3ed095(0x17c)]),populateAdminList('adminListPlatforms',masterConfig[_0x3ed095(0x20c)]),document[_0x3ed095(0x203)]('adminListUserStatuses')[_0x3ed095(0x1cf)]='';const _0x3215f0=masterConfig['userStatuses']&&masterConfig[_0x3ed095(0x163)]['length']>0x0?masterConfig[_0x3ed095(0x163)]:[{'name':_0x3ed095(0x1f0),'role':'to-do'},{'name':'ON-PROGRESS','role':_0x3ed095(0x196)},{'name':_0x3ed095(0x123),'role':_0x3ed095(0x22a)}];_0x3215f0[_0x3ed095(0x17f)](_0x156fdc=>addAdminStatusInput('adminListUserStatuses',_0x156fdc)),masterConfig[_0x3ed095(0x208)]&&loadSheetNames(null,'adminSheetName',_0x3ed095(0x20f),masterConfig[_0x3ed095(0x24f)]),validateAdminSaveButton();}function tutupAdmin(){const _0x33a9e0=a0_0xafc97f;document['getElementById'](_0x33a9e0(0x1ce))[_0x33a9e0(0x10f)][_0x33a9e0(0x207)](_0x33a9e0(0x223)),document[_0x33a9e0(0x203)](_0x33a9e0(0x1d7))['value']='';}function toggleMigrationView(){const _0x567dd3=a0_0xafc97f,_0x54f1e8=document['getElementById'](_0x567dd3(0x193)),_0x5c499c=document['getElementById'](_0x567dd3(0x1c3));_0x54f1e8[_0x567dd3(0x177)]['display']==='none'?(_0x54f1e8['style'][_0x567dd3(0x24b)]=_0x567dd3(0x1b0),_0x5c499c[_0x567dd3(0x177)][_0x567dd3(0x24b)]=_0x567dd3(0x248)):(_0x54f1e8['style'][_0x567dd3(0x24b)]=_0x567dd3(0x248),_0x5c499c['style'][_0x567dd3(0x24b)]=_0x567dd3(0x1b0),[_0x567dd3(0x241),_0x567dd3(0x15b),'PIC',_0x567dd3(0x111),_0x567dd3(0x18a),_0x567dd3(0x21e),_0x567dd3(0x148),_0x567dd3(0x1ca)][_0x567dd3(0x17f)](_0x16b2df=>{const _0x87c0c1=_0x567dd3;document[_0x87c0c1(0x203)](_0x87c0c1(0x25b)+_0x16b2df)[_0x87c0c1(0x10a)]=document[_0x87c0c1(0x203)](_0x87c0c1(0x137)+_0x16b2df)[_0x87c0c1(0x10a)];}),refreshMappingDropdowns(_0x567dd3(0x1d8)));}async function loadSheetNames(_0x4de26f,_0x3de581,_0x19d03c,_0xb1acb9=''){const _0x1def2e=a0_0xafc97f,_0xe0f4e5=document[_0x1def2e(0x203)](_0x19d03c)[_0x1def2e(0x10a)];if(!_0xe0f4e5)return showToast(_0x1def2e(0x181),_0x1def2e(0x231),_0x1def2e(0x12b));let _0x386c8f=_0x4de26f?_0x4de26f['target']:null;if(_0x386c8f)_0x386c8f[_0x1def2e(0x18c)]=_0x1def2e(0x23b);const _0x4dc777=await fetchAPI('getSheets&url='+encodeURIComponent(_0xe0f4e5));if(_0x386c8f)_0x386c8f[_0x1def2e(0x18c)]=_0x1def2e(0x10b);if(_0x4dc777&&_0x4dc777[_0x1def2e(0x15f)]===_0x1def2e(0x1da)){const _0xa1ff97=document[_0x1def2e(0x203)](_0x3de581);_0xa1ff97[_0x1def2e(0x1cf)]='',_0x4dc777[_0x1def2e(0x156)][_0x1def2e(0x17f)](_0x10817a=>_0xa1ff97['innerHTML']+=_0x1def2e(0x17d)+_0x10817a+'\x22\x20'+(_0x10817a===_0xb1acb9?'selected':'')+'>'+_0x10817a+_0x1def2e(0xf8));_0x19d03c===_0x1def2e(0x20f)&&(document['getElementById']('adminSSUrlDisplay')[_0x1def2e(0x10a)]=_0x4dc777[_0x1def2e(0x174)],document[_0x1def2e(0x203)](_0x1def2e(0x109))[_0x1def2e(0x177)]['color']='var(--glow-pj)',document[_0x1def2e(0x203)](_0x1def2e(0x109))[_0x1def2e(0x1c7)](_0x1def2e(0x1b2),'false'));if(_0x386c8f)showToast(_0x1def2e(0x153),_0x1def2e(0x118),_0x1def2e(0x1da));validateAdminSaveButton();}else{if(_0x386c8f)showToast(_0x1def2e(0x181),_0x1def2e(0x13b),'error');validateAdminSaveButton();}}function buildConfigPayload(_0x313bb6=![]){const _0x59bfd2=a0_0xafc97f,_0x1aa5d0=_0x313bb6?_0x59bfd2(0x1de):_0x59bfd2(0x19c),_0x343a33=_0x313bb6?_0x59bfd2(0x25b):'col',_0x265c67=_0x241d40=>Array[_0x59bfd2(0x214)](document[_0x59bfd2(0x203)](_0x241d40)[_0x59bfd2(0xea)](_0x59bfd2(0x1f8)))['map'](_0x4fc54c=>_0x4fc54c['value']['trim']())[_0x59bfd2(0x210)](Boolean),_0x1f2fe2=()=>{const _0x301bfa=_0x59bfd2;return Array[_0x301bfa(0x214)](document[_0x301bfa(0x203)]('adminListUserStatuses')[_0x301bfa(0xea)](_0x301bfa(0x166)))[_0x301bfa(0x190)](_0x30457b=>{const _0x2b54cc=_0x301bfa,_0x40a5ad=_0x30457b[_0x2b54cc(0x229)]('input')[_0x2b54cc(0x10a)][_0x2b54cc(0x10e)]()[_0x2b54cc(0x1b4)](),_0x254605=_0x30457b['querySelector'](_0x2b54cc(0x1e1))[_0x2b54cc(0x10a)];return _0x40a5ad?{'name':_0x40a5ad,'role':_0x254605}:null;})[_0x301bfa(0x210)](Boolean);};return{'spreadsheetUrl':document['getElementById'](_0x1aa5d0+'SSUrl')[_0x59bfd2(0x10a)][_0x59bfd2(0x10e)](),'sheetName':document[_0x59bfd2(0x203)](_0x1aa5d0+_0x59bfd2(0xf7))[_0x59bfd2(0x10a)][_0x59bfd2(0x10e)](),'startRow':Math[_0x59bfd2(0xfe)](parseInt(document[_0x59bfd2(0x203)](_0x1aa5d0+_0x59bfd2(0x132))[_0x59bfd2(0x10a)])||0x2,0x2),'columns':{'brand':parseInt(document['getElementById'](_0x343a33+'Brand')[_0x59bfd2(0x10a)])||0x1,'status':parseInt(document['getElementById'](_0x343a33+_0x59bfd2(0x15b))[_0x59bfd2(0x10a)])||0x2,'pic':parseInt(document[_0x59bfd2(0x203)](_0x343a33+_0x59bfd2(0x1fe))[_0x59bfd2(0x10a)])||0x3,'tipe':parseInt(document[_0x59bfd2(0x203)](_0x343a33+'Tipe')[_0x59bfd2(0x10a)])||0x4,'platform':parseInt(document[_0x59bfd2(0x203)](_0x343a33+_0x59bfd2(0x18a))['value'])||0x5,'deadline':parseInt(document['getElementById'](_0x343a33+'Deadline')[_0x59bfd2(0x10a)])||0x6,'link':parseInt(document[_0x59bfd2(0x203)](_0x343a33+_0x59bfd2(0x148))[_0x59bfd2(0x10a)])||0x7,'catatan':parseInt(document['getElementById'](_0x343a33+'Catatan')[_0x59bfd2(0x10a)])||0x8},'brands':_0x265c67(_0x59bfd2(0xfa)),'systemStatusMendesak':document[_0x59bfd2(0x203)](_0x59bfd2(0x17b))[_0x59bfd2(0x10a)][_0x59bfd2(0x10e)]()||'mendesak','systemStatusTerlambat':document[_0x59bfd2(0x203)]('adminStatusTerlambat')['value'][_0x59bfd2(0x10e)]()||'terlambat','userStatuses':_0x1f2fe2(),'pics':_0x265c67('adminListPICs'),'tipes':_0x265c67('adminListTipes'),'platforms':_0x265c67('adminListPlatforms')};}async function saveAdminConfig(_0x5bfe){const _0x369166=a0_0xafc97f,_0x289629=_0x5bfe[_0x369166(0x1ad)];_0x289629[_0x369166(0x1cf)]=_0x369166(0x1ab);const _0x2079c5=buildConfigPayload(![]);if(!_0x2079c5[_0x369166(0x208)]||!_0x2079c5[_0x369166(0x24f)]||!_0x2079c5[_0x369166(0x13e)]||!_0x2079c5[_0x369166(0x25d)])return validateAdminSaveButton(),showToast(_0x369166(0x181),_0x369166(0x249),_0x369166(0x12b));const _0x714489=await fetchAPI(_0x369166(0x1d0),{'config':_0x2079c5});_0x289629[_0x369166(0x1cf)]=_0x369166(0x23a),_0x714489&&_0x714489[_0x369166(0x15f)]==='success'&&(masterConfig=_0x2079c5,showToast(_0x369166(0x1c4),'Konfigurasi\x20diperbarui','success'),updateFilterOptions(),tutupAdmin(),pollData());}async function jalankanMigrasi(_0x26075b){showCustomConfirm('Anda\x20yakin\x20ingin\x20migrasi?\x20Data\x20akan\x20disalin\x20ke\x20Spreadsheet\x20baru.',async()=>{const _0x3abdd5=a0_0x7b4d,_0x49cf44=_0x26075b[_0x3abdd5(0x1ad)];_0x49cf44['innerText']='Memigrasi...';const _0x21bfb4=buildConfigPayload(!![]);if(!_0x21bfb4['spreadsheetUrl']||!_0x21bfb4[_0x3abdd5(0x24f)])return _0x49cf44['innerText']=_0x3abdd5(0x19e),showToast(_0x3abdd5(0x181),'Lengkapi\x20Link\x20&\x20Sheet\x20Tujuan',_0x3abdd5(0x12b));const _0x191160=await fetchAPI('migrateData',{'config':_0x21bfb4});_0x49cf44[_0x3abdd5(0x18c)]=_0x3abdd5(0x19e),_0x191160&&_0x191160[_0x3abdd5(0x15f)]===_0x3abdd5(0x1da)?(masterConfig=_0x21bfb4,showToast(_0x3abdd5(0x212),'Data\x20berhasil\x20dipindahkan.','success'),updateFilterOptions(),tutupAdmin(),pollData()):showToast(_0x3abdd5(0x1e6),_0x191160?_0x191160['message']:'Kesalahan\x20server',_0x3abdd5(0x12b));});}function toggleDownloadMenu(_0x4c1533){const _0x2f66ee=a0_0xafc97f;_0x4c1533[_0x2f66ee(0x256)](),document[_0x2f66ee(0x203)](_0x2f66ee(0x258))[_0x2f66ee(0x10f)]['toggle'](_0x2f66ee(0x134));}document[a0_0xafc97f(0x234)](a0_0xafc97f(0x15e),()=>{const _0x77c5e6=a0_0xafc97f;document['getElementById'](_0x77c5e6(0x258))[_0x77c5e6(0x10f)]['remove']('show');});function formatTanggalMurni(_0x3d64bb){const _0x12d0e8=a0_0xafc97f;if(!_0x3d64bb)return'-';const _0x9d1391=new Date(_0x3d64bb[_0x12d0e8(0x182)]('\x20','T'));if(isNaN(_0x9d1391[_0x12d0e8(0x1b3)]()))return'-';const _0x208157=_0x9d1391['getDate'](),_0xb112a5=_0x9d1391[_0x12d0e8(0x1dd)]('id-ID',{'month':_0x12d0e8(0xf2)}),_0xfb3c59=_0x9d1391['getFullYear']();return _0x208157+'\x20'+_0xb112a5+'\x20'+_0xfb3c59;}function exportToCSV(_0x43cbe9){const _0x5c9e12=a0_0xafc97f,_0x152711=[_0x5c9e12(0x241),_0x5c9e12(0x15b),_0x5c9e12(0x1fe),_0x5c9e12(0x151),'Platform',_0x5c9e12(0x21e),_0x5c9e12(0x148),_0x5c9e12(0x1ca)];let _0x5b1cfa=_0x152711[_0x5c9e12(0x23c)](',')+'\x0a';_0x43cbe9['forEach'](_0x51bf7d=>{const _0x44d5cc=_0x5c9e12;let _0x1e23bb=['\x22'+_0x51bf7d[_0x44d5cc(0x22e)][_0x44d5cc(0x23c)](',\x20')+'\x22','\x22'+_0x51bf7d[_0x44d5cc(0x15f)]+'\x22','\x22'+_0x51bf7d[_0x44d5cc(0x1d5)][_0x44d5cc(0x23c)](',\x20')+'\x22','\x22'+_0x51bf7d['tipeKonten']+'\x22','\x22'+_0x51bf7d['platform'][_0x44d5cc(0x23c)](',\x20')+'\x22','\x22'+formatTanggalMurni(_0x51bf7d[_0x44d5cc(0x23d)])+'\x22','\x22'+_0x51bf7d[_0x44d5cc(0x246)]+'\x22','\x22'+(_0x51bf7d[_0x44d5cc(0x152)]||'')[_0x44d5cc(0x182)](/"/g,'\x22\x22')+'\x22'];_0x5b1cfa+=_0x1e23bb[_0x44d5cc(0x23c)](',')+'\x0a';});const _0x8d0b07=new Blob([_0x5b1cfa],{'type':_0x5c9e12(0x1fd)}),_0x82f8ea=document[_0x5c9e12(0x1fa)]('a'),_0xe4e91e=URL['createObjectURL'](_0x8d0b07);_0x82f8ea[_0x5c9e12(0x1c7)]('href',_0xe4e91e),_0x82f8ea[_0x5c9e12(0x1c7)](_0x5c9e12(0x18b),'KontenPlan_'+new Date()[_0x5c9e12(0x1b3)]()+_0x5c9e12(0x108)),_0x82f8ea[_0x5c9e12(0x177)]['display']=_0x5c9e12(0x248),document[_0x5c9e12(0x11c)][_0x5c9e12(0x23e)](_0x82f8ea),_0x82f8ea[_0x5c9e12(0x15e)](),document[_0x5c9e12(0x11c)]['removeChild'](_0x82f8ea);}async function exportToExcel(_0x5603f7){const _0xc013b2=a0_0xafc97f;if(typeof ExcelJS===_0xc013b2(0x22b))return showToast(_0xc013b2(0x181),'Library\x20Excel\x20gagal\x20dimuat,\x20cek\x20koneksi\x20internet.',_0xc013b2(0x12b));const _0x6b394e=new ExcelJS[(_0xc013b2(0x14b))](),_0x1c729a=_0x6b394e[_0xc013b2(0x242)](_0xc013b2(0x1bd));_0x1c729a[_0xc013b2(0x172)]=[{'header':'Brand','key':_0xc013b2(0x22e),'width':0x19},{'header':_0xc013b2(0x15b),'key':'status','width':0x14},{'header':_0xc013b2(0x1fe),'key':_0xc013b2(0x15a),'width':0x14},{'header':_0xc013b2(0x151),'key':_0xc013b2(0x255),'width':0x16},{'header':_0xc013b2(0x18a),'key':'platform','width':0x16},{'header':_0xc013b2(0x21e),'key':_0xc013b2(0x23d),'width':0x19},{'header':_0xc013b2(0x148),'key':_0xc013b2(0x246),'width':0x28},{'header':_0xc013b2(0x1ca),'key':_0xc013b2(0x152),'width':0x28}],_0x1c729a[_0xc013b2(0x252)](0x1)['eachCell'](_0x46baf8=>{const _0x497900=_0xc013b2;_0x46baf8['fill']={'type':_0x497900(0x16b),'pattern':_0x497900(0x205),'fgColor':{'argb':'FF121826'}},_0x46baf8[_0x497900(0x1f5)]={'color':{'argb':_0x497900(0x1a4)},'bold':!![],'size':0xc},_0x46baf8[_0x497900(0x1b7)]={'vertical':_0x497900(0x164),'horizontal':_0x497900(0x15d)},_0x46baf8[_0x497900(0x102)]={'top':{'style':'medium','color':{'argb':_0x497900(0x1a4)}},'bottom':{'style':'medium','color':{'argb':_0x497900(0x1a4)}},'left':{'style':_0x497900(0x17e),'color':{'argb':_0x497900(0x1a4)}},'right':{'style':_0x497900(0x17e),'color':{'argb':'FF38BDF8'}}};}),_0x5603f7[_0xc013b2(0x17f)](_0x1e73b8=>{const _0x295128=_0xc013b2;_0x1c729a[_0x295128(0x251)]({'brand':_0x1e73b8['brand'][_0x295128(0x23c)](',\x20'),'status':_0x1e73b8[_0x295128(0x15f)],'pic':_0x1e73b8[_0x295128(0x1d5)][_0x295128(0x23c)](',\x20'),'tipe':_0x1e73b8[_0x295128(0x119)],'platform':_0x1e73b8['platform'][_0x295128(0x23c)](',\x20'),'deadline':formatTanggalMurni(_0x1e73b8[_0x295128(0x23d)]),'link':_0x1e73b8[_0x295128(0x246)],'catatan':_0x1e73b8[_0x295128(0x152)]});});const _0x5c2ddd=masterConfig[_0xc013b2(0x213)]['length']>0x0?'\x22'+masterConfig[_0xc013b2(0x213)][_0xc013b2(0x23c)](',')+'\x22':'',_0x558350=(masterConfig['userStatuses']||[])[_0xc013b2(0x190)](_0x22feab=>typeof _0x22feab===_0xc013b2(0x220)?_0x22feab:_0x22feab[_0xc013b2(0x1e3)]),_0x5902fa='\x22'+[..._0x558350,masterConfig[_0xc013b2(0x13e)]||_0xc013b2(0x186),masterConfig['systemStatusTerlambat']||'terlambat'][_0xc013b2(0x23c)](',')+'\x22',_0x3bfb51=masterConfig[_0xc013b2(0x11a)][_0xc013b2(0x244)]>0x0?'\x22'+masterConfig[_0xc013b2(0x11a)][_0xc013b2(0x23c)](',')+'\x22':'',_0x362de7=_0x5603f7[_0xc013b2(0x244)]+0x1;for(let _0x67d07c=0x2;_0x67d07c<=_0x362de7;_0x67d07c++){const _0x23e747=_0x1c729a[_0xc013b2(0x252)](_0x67d07c);_0x23e747[_0xc013b2(0x121)]({'includeEmpty':!![]},_0x5a434b=>{const _0x451994=_0xc013b2;_0x5a434b['border']={'top':{'style':'thin','color':{'argb':_0x451994(0x253)}},'left':{'style':_0x451994(0x17e),'color':{'argb':_0x451994(0x253)}},'bottom':{'style':_0x451994(0x17e),'color':{'argb':_0x451994(0x253)}},'right':{'style':_0x451994(0x17e),'color':{'argb':_0x451994(0x253)}}},_0x5a434b[_0x451994(0x1b7)]={'vertical':'middle','wrapText':!![]};}),_0x5c2ddd&&(_0x1c729a[_0xc013b2(0x1ea)]('A'+_0x67d07c)[_0xc013b2(0xf1)]={'type':_0xc013b2(0x204),'allowBlank':!![],'formulae':[_0x5c2ddd],'showErrorMessage':!![]}),_0x5902fa&&(_0x1c729a[_0xc013b2(0x1ea)]('B'+_0x67d07c)[_0xc013b2(0xf1)]={'type':_0xc013b2(0x204),'allowBlank':!![],'formulae':[_0x5902fa],'showErrorMessage':!![]}),_0x3bfb51&&(_0x1c729a[_0xc013b2(0x1ea)]('C'+_0x67d07c)[_0xc013b2(0xf1)]={'type':_0xc013b2(0x204),'allowBlank':!![],'formulae':[_0x3bfb51],'showErrorMessage':!![]});}const _0x287be2=await _0x6b394e[_0xc013b2(0x1a1)][_0xc013b2(0x13a)](),_0x2e4b34=new Blob([_0x287be2],{'type':_0xc013b2(0x11f)}),_0x3e8b5e=URL['createObjectURL'](_0x2e4b34),_0x4e3730=document[_0xc013b2(0x1fa)]('a');_0x4e3730[_0xc013b2(0x1ef)]=_0x3e8b5e,_0x4e3730[_0xc013b2(0x18b)]=_0xc013b2(0x1aa)+new Date()['getTime']()+_0xc013b2(0x145),document[_0xc013b2(0x11c)][_0xc013b2(0x23e)](_0x4e3730),_0x4e3730[_0xc013b2(0x15e)](),document['body']['removeChild'](_0x4e3730),URL['revokeObjectURL'](_0x3e8b5e);}async function triggerDownload(_0x460b46){const _0x297b45=a0_0xafc97f;document['getElementById'](_0x297b45(0x258))['classList'][_0x297b45(0x207)](_0x297b45(0x134));const _0x73b78d=contentPlans[_0x297b45(0x210)](filterLogic);if(_0x73b78d['length']===0x0)return showToast('Gagal',_0x297b45(0x230),_0x297b45(0x12b));showToast(_0x297b45(0x184),_0x297b45(0xf6),'success'),_0x460b46==='csv'?exportToCSV(_0x73b78d):await exportToExcel(_0x73b78d);}function updateFilterOptions(){const _0x3177ad=a0_0xafc97f,_0x5eeb44=document['getElementById']('filterBrand'),_0xd5340f=_0x5eeb44['value'];_0x5eeb44[_0x3177ad(0x1cf)]=_0x3177ad(0x239)+masterConfig['brands'][_0x3177ad(0x190)](_0x9d8e0f=>'<option\x20value=\x22'+_0x9d8e0f+'\x22>'+_0x9d8e0f+_0x3177ad(0xf8))['join'](''),_0x5eeb44[_0x3177ad(0x10a)]=masterConfig[_0x3177ad(0x213)]['includes'](_0xd5340f)?_0xd5340f:_0x3177ad(0x173);const _0x21940c=document[_0x3177ad(0x203)](_0x3177ad(0x25c)),_0x4a178b=_0x21940c[_0x3177ad(0x10a)],_0x445ae3=(masterConfig[_0x3177ad(0x163)]||[])[_0x3177ad(0x190)](_0x7ca803=>typeof _0x7ca803===_0x3177ad(0x220)?_0x7ca803:_0x7ca803[_0x3177ad(0x1e3)]),_0x16bc82=[..._0x445ae3,masterConfig[_0x3177ad(0x13e)]||_0x3177ad(0x186),masterConfig[_0x3177ad(0x25d)]||'terlambat'];_0x21940c[_0x3177ad(0x1cf)]=_0x3177ad(0x239)+_0x16bc82[_0x3177ad(0x190)](_0x28eed1=>_0x3177ad(0x17d)+_0x28eed1+'\x22>'+_0x28eed1+_0x3177ad(0xf8))[_0x3177ad(0x23c)](''),_0x21940c[_0x3177ad(0x10a)]=_0x16bc82[_0x3177ad(0x192)](_0x4a178b)?_0x4a178b:_0x3177ad(0x173),document[_0x3177ad(0x203)](_0x3177ad(0x103))[_0x3177ad(0x1cf)]=_0x445ae3['map'](_0x507169=>_0x3177ad(0x17d)+_0x507169+'\x22>'+_0x507169+_0x3177ad(0xf8))['join'](''),document[_0x3177ad(0x203)]('formTipeKonten')['innerHTML']=(masterConfig[_0x3177ad(0x17c)]||[])[_0x3177ad(0x190)](_0x305a1b=>'<option\x20value=\x22'+_0x305a1b+'\x22>'+_0x305a1b+_0x3177ad(0xf8))[_0x3177ad(0x23c)]('');}function bukaModalFilter(){const _0x21ff78=a0_0xafc97f;document['getElementById'](_0x21ff78(0x1c9))[_0x21ff78(0x10f)][_0x21ff78(0x115)]('active');}function tutupModalFilter(){const _0x55b720=a0_0xafc97f;document[_0x55b720(0x203)]('filterModal')[_0x55b720(0x10f)][_0x55b720(0x207)](_0x55b720(0x223));}function handleTimeModeChange(){const _0x18e212=a0_0xafc97f,_0x1d84ac=document[_0x18e212(0x203)](_0x18e212(0x161))[_0x18e212(0x10a)],_0x2d1def=document['getElementById'](_0x18e212(0x19b));['Date',_0x18e212(0x114),_0x18e212(0x133),_0x18e212(0x1a3)][_0x18e212(0x17f)](_0x1630cc=>{const _0x4a3da7=_0x18e212,_0x10c9e6=document[_0x4a3da7(0x203)](_0x4a3da7(0x21c)+_0x1630cc);if(_0x10c9e6)_0x10c9e6[_0x4a3da7(0x177)][_0x4a3da7(0x24b)]=_0x4a3da7(0x248);});if(_0x1d84ac===_0x18e212(0x173)||_0x1d84ac===_0x18e212(0x1f1)||_0x1d84ac==='this_week')_0x2d1def[_0x18e212(0x177)][_0x18e212(0x24b)]=_0x18e212(0x248);else{_0x2d1def[_0x18e212(0x177)][_0x18e212(0x24b)]=_0x18e212(0x13c);if(_0x1d84ac===_0x18e212(0x1bc))document[_0x18e212(0x203)]('groupDate')[_0x18e212(0x177)][_0x18e212(0x24b)]=_0x18e212(0x13c);if(_0x1d84ac==='specific_year')document[_0x18e212(0x203)](_0x18e212(0x1ba))[_0x18e212(0x177)][_0x18e212(0x24b)]=_0x18e212(0x13c);if(_0x1d84ac===_0x18e212(0x21a))document[_0x18e212(0x203)]('groupHour')[_0x18e212(0x177)][_0x18e212(0x24b)]=_0x18e212(0x13c);if(_0x1d84ac===_0x18e212(0x216))document['getElementById'](_0x18e212(0x1be))[_0x18e212(0x177)][_0x18e212(0x24b)]=_0x18e212(0x12c);}}function terapkanFilter(){renderContent(),tutupModalFilter();}function resetFilters(){const _0x5f1e67=a0_0xafc97f;document[_0x5f1e67(0x203)](_0x5f1e67(0x25c))['value']='ALL',document['getElementById'](_0x5f1e67(0x235))[_0x5f1e67(0x10a)]=_0x5f1e67(0x173),document['getElementById'](_0x5f1e67(0x161))[_0x5f1e67(0x10a)]=_0x5f1e67(0x173),handleTimeModeChange(),renderContent(),tutupModalFilter();}function autoUpdateStatusToSheet(_0x2e1b22,_0x4908a9){const _0x28ca99=a0_0xafc97f;_0x2e1b22[_0x28ca99(0x15f)]=_0x4908a9;let _0xf81806=_0x2e1b22[_0x28ca99(0x23d)];if(_0xf81806){_0xf81806=_0xf81806['replace'](/\s+/g,'T');if(_0xf81806[_0x28ca99(0x244)]===0x10)_0xf81806+=_0x28ca99(0x232);}const _0x249055={'id':_0x2e1b22['id'],'brand':_0x2e1b22[_0x28ca99(0x22e)],'status':_0x4908a9,'penanggungJawab':_0x2e1b22[_0x28ca99(0x1d5)],'tipeKonten':_0x2e1b22[_0x28ca99(0x119)],'platform':_0x2e1b22['platform'],'deadline':_0xf81806,'link':_0x2e1b22[_0x28ca99(0x246)],'catatan':_0x2e1b22[_0x28ca99(0x152)]};fetchAPI(_0x28ca99(0x12a),{'data':_0x249055});}function getComputedStatus(_0x2bcbd1){const _0x18b606=a0_0xafc97f,_0x51804a=getRoleForStatus(_0x2bcbd1[_0x18b606(0x15f)]);if(_0x51804a===_0x18b606(0x247)||_0x51804a===_0x18b606(0x22a))return _0x2bcbd1[_0x18b606(0x15f)];if(!_0x2bcbd1[_0x18b606(0x23d)])return _0x2bcbd1[_0x18b606(0x15f)];let _0x24a5af=_0x2bcbd1[_0x18b606(0x23d)]['replace'](/\s+/g,'T');if(_0x24a5af['length']===0x10)_0x24a5af+=_0x18b606(0x232);const _0x57659a=new Date(_0x24a5af)[_0x18b606(0x1b3)](),_0x43b177=new Date()[_0x18b606(0x1b3)](),_0x337580=_0x57659a-_0x43b177;if(_0x337580<=0x0)return masterConfig[_0x18b606(0x25d)]||_0x18b606(0x14c);if(_0x337580<=0x36ee80)return masterConfig['systemStatusMendesak']||_0x18b606(0x186);if(_0x2bcbd1[_0x18b606(0x15f)]===(masterConfig[_0x18b606(0x13e)]||'mendesak')||_0x2bcbd1[_0x18b606(0x15f)]===(masterConfig['systemStatusTerlambat']||'terlambat')){const _0x18604e=(masterConfig[_0x18b606(0x163)]||[])[_0x18b606(0x136)](_0x1a1859=>typeof _0x1a1859!==_0x18b606(0x220)&&(_0x1a1859[_0x18b606(0x21d)]||'')['toLowerCase']()===_0x18b606(0x196));return _0x18604e?(_0x18604e[_0x18b606(0x1e3)]||_0x18b606(0x21b))[_0x18b606(0x1b4)]():'ON-PROGRESS';}return _0x2bcbd1[_0x18b606(0x15f)];}function validateCardData(_0x19d396){const _0x3e66a0=a0_0xafc97f;let _0x4e2793=![];return _0x19d396['brand']['forEach'](_0x1a9af5=>{const _0x221428=a0_0x7b4d;if(!masterConfig[_0x221428(0x213)]['includes'](_0x1a9af5))_0x4e2793=!![];}),_0x19d396[_0x3e66a0(0x1d5)][_0x3e66a0(0x17f)](_0x54209a=>{const _0x548788=_0x3e66a0;if(!masterConfig['pics'][_0x548788(0x192)](_0x54209a)&&_0x54209a!==_0x548788(0x1f7))_0x4e2793=!![];}),_0x4e2793;}function formatHeaderGroup(_0x59fab6,_0x448344=![]){const _0x35a3b6=a0_0xafc97f;if(_0x59fab6===_0x35a3b6(0xef))return _0x35a3b6(0x215);const _0x294dd0=new Date(_0x59fab6),_0x4bd027=_0x294dd0[_0x35a3b6(0x1dd)]('id-ID',{'day':_0x35a3b6(0x16f),'month':_0x35a3b6(0xf2),'year':_0x35a3b6(0x16f),'weekday':_0x35a3b6(0xf2)});if(_0x448344)return'<svg\x20width=\x2215\x22\x20height=\x2215\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22#38bdf8\x22\x20stroke-width=\x222\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22><rect\x20x=\x223\x22\x20y=\x224\x22\x20width=\x2218\x22\x20height=\x2218\x22\x20rx=\x222\x22></rect><line\x20x1=\x2216\x22\x20y1=\x222\x22\x20x2=\x2216\x22\x20y2=\x226\x22></line><line\x20x1=\x228\x22\x20y1=\x222\x22\x20x2=\x228\x22\x20y2=\x226\x22></line><line\x20x1=\x223\x22\x20y1=\x2210\x22\x20x2=\x2221\x22\x20y2=\x2210\x22></line><polyline\x20points=\x229\x2016\x2011\x2018\x2015\x2014\x22></polyline></svg>\x20'+_0x4bd027;return'<svg\x20width=\x2214\x22\x20height=\x2214\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22><rect\x20x=\x223\x22\x20y=\x224\x22\x20width=\x2218\x22\x20height=\x2218\x22\x20rx=\x222\x22></rect><line\x20x1=\x2216\x22\x20y1=\x222\x22\x20x2=\x2216\x22\x20y2=\x226\x22></line><line\x20x1=\x228\x22\x20y1=\x222\x22\x20x2=\x228\x22\x20y2=\x226\x22></line><line\x20x1=\x223\x22\x20y1=\x2210\x22\x20x2=\x2221\x22\x20y2=\x2210\x22></line></svg>\x20'+_0x4bd027;}function filterLogic(_0x38bbf2){const _0x3a752d=a0_0xafc97f,_0x434b60=document['getElementById'](_0x3a752d(0x1d7))[_0x3a752d(0x10a)][_0x3a752d(0x122)]()[_0x3a752d(0x10e)]();if(_0x434b60){if(!_0x38bbf2[_0x3a752d(0x22e)]['some'](_0x4f5071=>_0x4f5071[_0x3a752d(0x122)]()[_0x3a752d(0x192)](_0x434b60))&&!_0x38bbf2[_0x3a752d(0x1d5)][_0x3a752d(0x1e5)](_0x52bd64=>_0x52bd64[_0x3a752d(0x122)]()[_0x3a752d(0x192)](_0x434b60))&&!(_0x38bbf2[_0x3a752d(0x152)]||'')['toLowerCase']()['includes'](_0x434b60))return![];}const _0x4c7a33=document[_0x3a752d(0x203)]('filterStatus')[_0x3a752d(0x10a)];if(_0x4c7a33!==_0x3a752d(0x173)&&getComputedStatus(_0x38bbf2)!==_0x4c7a33)return![];const _0x4ff31d=document[_0x3a752d(0x203)](_0x3a752d(0x235))[_0x3a752d(0x10a)];if(_0x4ff31d!==_0x3a752d(0x173)&&!_0x38bbf2['brand'][_0x3a752d(0x192)](_0x4ff31d))return![];const _0x1c74c6=document[_0x3a752d(0x203)](_0x3a752d(0x161))[_0x3a752d(0x10a)];if(_0x1c74c6!==_0x3a752d(0x173)){if(!_0x38bbf2[_0x3a752d(0x23d)])return![];const _0x39072a=new Date(_0x38bbf2[_0x3a752d(0x23d)]['replace']('\x20','T')),_0x157aa0=new Date();if(_0x1c74c6===_0x3a752d(0x1f1)&&_0x39072a['toDateString']()!==_0x157aa0[_0x3a752d(0x1a6)]())return![];if(_0x1c74c6===_0x3a752d(0x15c)){const _0x4ef528=new Date(_0x157aa0);_0x4ef528[_0x3a752d(0x250)](_0x157aa0[_0x3a752d(0x168)]()-_0x157aa0[_0x3a752d(0x139)]()),_0x4ef528[_0x3a752d(0xf3)](0x0,0x0,0x0,0x0);const _0x1d3c83=new Date(_0x4ef528);_0x1d3c83[_0x3a752d(0x250)](_0x4ef528[_0x3a752d(0x168)]()+0x7);if(_0x39072a<_0x4ef528||_0x39072a>=_0x1d3c83)return![];}if(_0x1c74c6===_0x3a752d(0x1bc)){const _0x1a71b7=document[_0x3a752d(0x203)]('filterSpecificDate')[_0x3a752d(0x10a)];if(!_0x1a71b7||_0x39072a[_0x3a752d(0x22d)]()[_0x3a752d(0x201)]('T')[0x0]!==_0x1a71b7)return![];}if(_0x1c74c6==='specific_year'){const _0x351c25=parseInt(document[_0x3a752d(0x203)](_0x3a752d(0x245))['value']);if(!_0x351c25||_0x39072a[_0x3a752d(0x1cd)]()!==_0x351c25)return![];}if(_0x1c74c6===_0x3a752d(0x21a)){const _0x52e90c=parseInt(document[_0x3a752d(0x203)](_0x3a752d(0x124))[_0x3a752d(0x10a)]);if(isNaN(_0x52e90c)||_0x39072a[_0x3a752d(0x237)]()!==_0x52e90c)return![];}if(_0x1c74c6===_0x3a752d(0x216)){const _0x44bbc8=document[_0x3a752d(0x203)](_0x3a752d(0x202))[_0x3a752d(0x10a)],_0x26c9f8=document[_0x3a752d(0x203)](_0x3a752d(0x183))[_0x3a752d(0x10a)];if(_0x44bbc8&&_0x39072a<new Date(_0x44bbc8+_0x3a752d(0x120)))return![];if(_0x26c9f8&&_0x39072a>new Date(_0x26c9f8+_0x3a752d(0x254)))return![];}}return!![];}function renderContent(){const _0x1293da=a0_0xafc97f,_0x5adef6=document[_0x1293da(0x203)](_0x1293da(0x226));_0x5adef6[_0x1293da(0x1cf)]='';let _0x56a54e=contentPlans[_0x1293da(0x210)](filterLogic);if(_0x56a54e[_0x1293da(0x244)]===0x0){_0x5adef6[_0x1293da(0x1cf)]=_0x1293da(0x105);return;}_0x56a54e[_0x1293da(0x1c0)]((_0x26a34e,_0x3180a2)=>new Date(_0x26a34e[_0x1293da(0x23d)]?_0x26a34e[_0x1293da(0x23d)][_0x1293da(0x182)]('\x20','T'):'2099-01-01')-new Date(_0x3180a2['deadline']?_0x3180a2[_0x1293da(0x23d)][_0x1293da(0x182)]('\x20','T'):_0x1293da(0x199)));const _0x5ef4f0={};_0x56a54e[_0x1293da(0x17f)](_0xd3f699=>{const _0x355aa3=_0x1293da;let _0x492fc6=_0xd3f699[_0x355aa3(0x23d)]?new Date(_0xd3f699[_0x355aa3(0x23d)]['replace']('\x20','T'))[_0x355aa3(0x22d)]()[_0x355aa3(0x201)]('T')[0x0]:'CATATAN';if(!_0x5ef4f0[_0x492fc6])_0x5ef4f0[_0x492fc6]=[];_0x5ef4f0[_0x492fc6][_0x355aa3(0x12e)](_0xd3f699);});for(const _0x5cff14 in _0x5ef4f0){const _0x1471b9=_0x5ef4f0[_0x5cff14][_0x1293da(0x218)](_0x271da6=>getRoleForStatus(_0x271da6[_0x1293da(0x15f)])===_0x1293da(0x22a));_0x5adef6[_0x1293da(0x1cf)]+=_0x1293da(0x219)+formatHeaderGroup(_0x5cff14,_0x1471b9)+_0x1293da(0x1c5),_0x5ef4f0[_0x5cff14][_0x1293da(0x17f)](_0x105cf3=>{const _0x43c21b=_0x1293da;let _0x84e60a=getComputedStatus(_0x105cf3);_0x105cf3[_0x43c21b(0x15f)]!==_0x84e60a&&autoUpdateStatusToSheet(_0x105cf3,_0x84e60a);const _0x1898d4=getRoleForStatus(_0x105cf3[_0x43c21b(0x15f)]),_0x3c1139=_0x1898d4===_0x43c21b(0x247),_0x327d9e=_0x1898d4==='selesai',_0x529a03=validateCardData(_0x105cf3),_0x4e45eb=_0x105cf3[_0x43c21b(0x1d5)][_0x43c21b(0x190)](_0x3f7067=>masterConfig[_0x43c21b(0x11a)][_0x43c21b(0x192)](_0x3f7067)?_0x3f7067:'Tidak\x20Ada'),_0xd506b5=_0x105cf3['brand']['map'](_0x55ebda=>!masterConfig[_0x43c21b(0x213)][_0x43c21b(0x192)](_0x55ebda)?_0x43c21b(0x1a0)+_0x55ebda:_0x55ebda);let _0x96a458=_0x43c21b(0x187)+(_0x327d9e?_0x43c21b(0x1ac):'')+'\x20'+(_0x529a03?_0x43c21b(0x1ee):''),_0xefb53e='',_0x4543e0='',_0x13b7f1='-',_0x59ddd3='';if(_0x105cf3[_0x43c21b(0x23d)]){let _0x7aae75=_0x105cf3['deadline'][_0x43c21b(0x182)](/\s+/g,'T');if(_0x7aae75[_0x43c21b(0x244)]===0x10)_0x7aae75+=_0x43c21b(0x232);_0x59ddd3=_0x7aae75;const _0x349864=new Date(_0x7aae75);if(!isNaN(_0x349864[_0x43c21b(0x1b3)]())){const _0x48cffc=_0x349864[_0x43c21b(0x168)](),_0xf736a2=_0x349864['toLocaleDateString'](_0x43c21b(0x106),{'month':_0x43c21b(0x158)}),_0x3113cf=_0x349864[_0x43c21b(0x1cd)](),_0x4827f4=_0x349864[_0x43c21b(0x237)]()['toString']()[_0x43c21b(0x162)](0x2,'0'),_0x45a21b=_0x349864[_0x43c21b(0x138)]()[_0x43c21b(0x142)]()[_0x43c21b(0x162)](0x2,'0');_0x13b7f1=_0x48cffc+'\x20'+_0xf736a2+'\x20'+_0x3113cf+',\x20'+_0x4827f4+':'+_0x45a21b;}}if(_0x327d9e){const _0x52c6fb=isValidUrl(_0x105cf3[_0x43c21b(0x246)])?_0x43c21b(0x198)+_0x105cf3[_0x43c21b(0x246)]+_0x43c21b(0x100)+_0x105cf3[_0x43c21b(0x246)]+_0x43c21b(0x170):_0x43c21b(0x1fc)+(_0x105cf3[_0x43c21b(0x246)]||'-')+_0x43c21b(0x1c5);_0xefb53e=_0x43c21b(0x20a)+_0x52c6fb+_0x43c21b(0x125)+(_0x105cf3[_0x43c21b(0x152)]?_0x43c21b(0x1c6)+_0x105cf3['catatan']+_0x43c21b(0x11b):'')+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>';}else!_0x3c1139&&(_0x4543e0=_0x43c21b(0x146)+_0x59ddd3+_0x43c21b(0x233));let _0x5753de=_0x84e60a[_0x43c21b(0x122)]()[_0x43c21b(0x182)](/\s+/g,'-');_0x84e60a!==(masterConfig[_0x43c21b(0x13e)]||_0x43c21b(0x186))&&_0x84e60a!==(masterConfig['systemStatusTerlambat']||_0x43c21b(0x14c))&&(_0x5753de=getRoleForStatus(_0x84e60a)[_0x43c21b(0x122)]()),_0x5adef6[_0x43c21b(0x1cf)]+=_0x43c21b(0x150)+_0x96a458+_0x43c21b(0x169)+_0x105cf3['id']+_0x43c21b(0x243)+_0xd506b5[_0x43c21b(0x190)](_0x3dcf69=>_0x43c21b(0x1e0)+(_0x3dcf69[_0x43c21b(0x192)](_0x43c21b(0x1d9))?'invalid':'')+'\x22>'+_0x3dcf69+_0x43c21b(0x17a))[_0x43c21b(0x23c)]('')+_0x43c21b(0x159)+_0x105cf3['id']+_0x43c21b(0x154)+_0x105cf3['id']+_0x43c21b(0x1db)+_0x5753de+_0x43c21b(0x1f3)+_0x105cf3['id']+'\x22>'+_0x84e60a[_0x43c21b(0x1b4)]()+_0x43c21b(0x171)+_0x4e45eb[_0x43c21b(0x190)](_0x52eb06=>_0x43c21b(0x1ec)+(_0x52eb06===_0x43c21b(0x1f7)?_0x43c21b(0x22c):'')+'\x22>'+_0x52eb06+'</span>')[_0x43c21b(0x23c)]('')+_0x43c21b(0x16a)+(_0x105cf3['tipeKonten']||'-')+_0x43c21b(0x18f)+_0x105cf3[_0x43c21b(0x18d)][_0x43c21b(0x190)](_0x135c66=>_0x43c21b(0x12d)+_0x135c66[_0x43c21b(0x122)]()[_0x43c21b(0x182)](/\s+/g,'')+'\x22>'+_0x135c66+'</span>')[_0x43c21b(0x23c)]('')+_0x43c21b(0xec)+(_0x3c1139?_0x43c21b(0x149):_0x43c21b(0x257)+_0x13b7f1+_0x43c21b(0x17a))+_0x43c21b(0x188)+_0xefb53e+_0x43c21b(0x24e)+_0x4543e0+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20';});}jalankanCountdown();}function jalankanCountdown(){const _0x3308c3=a0_0xafc97f,_0x371f5d=new Date()[_0x3308c3(0x1b3)]();document[_0x3308c3(0xea)](_0x3308c3(0x1fb))[_0x3308c3(0x17f)](_0x314582=>{const _0x33e1f6=_0x3308c3,_0x341030=_0x314582['getAttribute']('data-target');if(!_0x341030)return;const _0x1f3b75=new Date(_0x341030)[_0x33e1f6(0x1b3)]();if(isNaN(_0x1f3b75)){_0x314582['innerText']='Format\x20Salah';return;}const _0x38e308=_0x1f3b75-_0x371f5d,_0x5a42af=_0x314582[_0x33e1f6(0x175)](_0x33e1f6(0x141)),_0x11f1ee=_0x5a42af?_0x5a42af['querySelector']('.badge'):null,_0x4b7151=_0x11f1ee&&_0x11f1ee[_0x33e1f6(0x10f)]['contains'](_0x33e1f6(0x22a));if(_0x38e308<=0x0){_0x314582['innerText']=_0x33e1f6(0x14a);if(!_0x4b7151&&_0x11f1ee&&!_0x11f1ee[_0x33e1f6(0x10f)][_0x33e1f6(0x1a5)](_0x33e1f6(0x14c))){_0x11f1ee[_0x33e1f6(0x1a2)]=_0x33e1f6(0x191);const _0x3b26f1=masterConfig['systemStatusTerlambat']||_0x33e1f6(0x14c);_0x11f1ee[_0x33e1f6(0x18c)]=_0x3b26f1[_0x33e1f6(0x1b4)]();const _0x1f98c1=parseInt(_0x5a42af['id']['replace']('card-','')),_0x50c72d=contentPlans[_0x33e1f6(0x136)](_0x57414c=>_0x57414c['id']===_0x1f98c1);_0x50c72d&&_0x50c72d['status']!==_0x3b26f1&&autoUpdateStatusToSheet(_0x50c72d,_0x3b26f1);}return;}if(!_0x4b7151&&_0x11f1ee){if(_0x38e308<=0x36ee80&&!_0x11f1ee[_0x33e1f6(0x10f)]['contains'](_0x33e1f6(0x186))){_0x11f1ee[_0x33e1f6(0x1a2)]=_0x33e1f6(0x110);const _0x3eac92=masterConfig[_0x33e1f6(0x13e)]||_0x33e1f6(0x186);_0x11f1ee[_0x33e1f6(0x18c)]=_0x3eac92['toUpperCase']();const _0x30f9ab=parseInt(_0x5a42af['id'][_0x33e1f6(0x182)](_0x33e1f6(0x126),'')),_0xb7c393=contentPlans[_0x33e1f6(0x136)](_0x1feff3=>_0x1feff3['id']===_0x30f9ab);_0xb7c393&&_0xb7c393[_0x33e1f6(0x15f)]!==_0x3eac92&&autoUpdateStatusToSheet(_0xb7c393,_0x3eac92);}else _0x38e308>0x36ee80&&_0x11f1ee['classList'][_0x33e1f6(0x1a5)](_0x33e1f6(0x186))&&(_0x11f1ee['className']=_0x33e1f6(0xf9),_0x11f1ee['innerText']='ON\x20PROGRESS');}const _0x4a3695=Math[_0x33e1f6(0xfd)](_0x38e308/(0x3e8*0x3c*0x3c*0x18)),_0x4d73b3=Math[_0x33e1f6(0xfd)](_0x38e308%(0x3e8*0x3c*0x3c*0x18)/(0x3e8*0x3c*0x3c)),_0x3accf6=Math[_0x33e1f6(0xfd)](_0x38e308%(0x3e8*0x3c*0x3c)/(0x3e8*0x3c)),_0x22e30b=Math['floor'](_0x38e308%(0x3e8*0x3c)/0x3e8);_0x314582[_0x33e1f6(0x18c)]=_0x4a3695+_0x33e1f6(0x20e)+_0x4d73b3+_0x33e1f6(0x180)+_0x3accf6+_0x33e1f6(0x131)+_0x22e30b+'\x20Detik';});}function hapusData(_0x2f6981){const _0x36ae8d=a0_0xafc97f;showCustomConfirm(_0x36ae8d(0x14f),async()=>{const _0x207fc8=_0x36ae8d;showToast(_0x207fc8(0x1d6),_0x207fc8(0x143),_0x207fc8(0x1da)),await fetchAPI(_0x207fc8(0x112),{'row':_0x2f6981}),await pollData();});}function refreshModalFormDropdownsSafe(){const _0x34d354=a0_0xafc97f;['brand',_0x34d354(0x15a),_0x34d354(0x18d)][_0x34d354(0x17f)](_0x5eb20a=>{const _0x1869fb=_0x34d354,_0xd80549=document[_0x1869fb(0x203)](_0x5eb20a+_0x1869fb(0x1df)),_0x389155=_0xd80549[_0x1869fb(0xea)]('select'),_0x15fd03=_0x5eb20a===_0x1869fb(0x22e)?masterConfig[_0x1869fb(0x213)]:_0x5eb20a==='pic'?masterConfig['pics']:masterConfig[_0x1869fb(0x20c)];_0x389155[_0x1869fb(0x17f)](_0x2c7684=>{const _0x235ca5=_0x1869fb,_0x22048d=_0x2c7684[_0x235ca5(0x10a)];_0x2c7684[_0x235ca5(0x1cf)]=_0x235ca5(0x21f)+_0x15fd03[_0x235ca5(0x190)](_0x42b0d8=>_0x235ca5(0x17d)+_0x42b0d8+'\x22\x20'+(_0x42b0d8===_0x22048d?_0x235ca5(0xeb):'')+'>'+_0x42b0d8+'</option>')[_0x235ca5(0x23c)](''),!_0x15fd03['includes'](_0x22048d)&&_0x22048d&&(_0x2c7684['innerHTML']+=_0x235ca5(0x17d)+_0x22048d+_0x235ca5(0x240)+_0x22048d+_0x235ca5(0xf8));});});const _0x39648a=(masterConfig[_0x34d354(0x163)]||[])[_0x34d354(0x190)](_0x30b1e2=>typeof _0x30b1e2===_0x34d354(0x220)?_0x30b1e2:_0x30b1e2[_0x34d354(0x1e3)]),_0x4632ca=document[_0x34d354(0x203)](_0x34d354(0x103))[_0x34d354(0x10a)];document[_0x34d354(0x203)](_0x34d354(0x103))['innerHTML']=_0x39648a[_0x34d354(0x190)](_0x9d1fee=>_0x34d354(0x17d)+_0x9d1fee+'\x22>'+_0x9d1fee+_0x34d354(0xf8))[_0x34d354(0x23c)]('');if(!_0x39648a[_0x34d354(0x192)](_0x4632ca))document[_0x34d354(0x203)](_0x34d354(0x103))[_0x34d354(0x1cf)]+=_0x34d354(0x17d)+_0x4632ca+'\x22\x20selected>'+_0x4632ca+_0x34d354(0xf8);const _0xa71c57=document[_0x34d354(0x203)](_0x34d354(0x155))[_0x34d354(0x10a)];document[_0x34d354(0x203)](_0x34d354(0x155))[_0x34d354(0x1cf)]=(masterConfig['tipes']||[])[_0x34d354(0x190)](_0x13571c=>_0x34d354(0x17d)+_0x13571c+'\x22>'+_0x13571c+_0x34d354(0xf8))[_0x34d354(0x23c)]('');if(!(masterConfig[_0x34d354(0x17c)]||[])[_0x34d354(0x192)](_0xa71c57))document[_0x34d354(0x203)](_0x34d354(0x155))[_0x34d354(0x1cf)]+=_0x34d354(0x17d)+_0xa71c57+_0x34d354(0x10c)+_0xa71c57+_0x34d354(0xf8);}function tambahDropdown(_0x2ece45,_0x2f391f,_0x5c5e73=''){const _0x3dd791=a0_0xafc97f,_0x178295=document['getElementById'](_0x2ece45),_0x224293=Array[_0x3dd791(0x214)](_0x178295['querySelectorAll'](_0x3dd791(0x1e1)))[_0x3dd791(0x190)](_0x22169c=>_0x22169c['value'])[_0x3dd791(0x210)](Boolean),_0x247571=_0x2f391f['filter'](_0x52f0db=>!_0x224293['includes'](_0x52f0db)||_0x52f0db===_0x5c5e73);if(!_0x5c5e73&&_0x247571[_0x3dd791(0x244)]===0x0)return;const _0x1e507d=document[_0x3dd791(0x1fa)]('div');_0x1e507d['className']=_0x3dd791(0x130);const _0x14a016=document['createElement'](_0x3dd791(0x1e1));_0x14a016[_0x3dd791(0x1cf)]=_0x3dd791(0x21f)+_0x2f391f['map'](_0x5e7f64=>_0x3dd791(0x17d)+_0x5e7f64+'\x22\x20'+(_0x5e7f64===_0x5c5e73?_0x3dd791(0xeb):'')+'>'+_0x5e7f64+_0x3dd791(0xf8))[_0x3dd791(0x23c)](''),_0x14a016['onchange']=validateSaveButton;const _0x5f1391=document['createElement'](_0x3dd791(0x116));_0x5f1391[_0x3dd791(0x1a2)]=_0x3dd791(0x1cc),_0x5f1391['innerHTML']='<svg\x20width=\x2214\x22\x20height=\x2214\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22><polyline\x20points=\x223\x206\x205\x206\x2021\x206\x22></polyline><path\x20d=\x22M19\x206v14a2\x202\x200\x200\x201-2\x202H7a2\x202\x200\x200\x201-2-2V6m3\x200V4a2\x202\x200\x200\x201\x202-2h4a2\x202\x200\x200\x201\x202\x202v2\x22></path><line\x20x1=\x2210\x22\x20y1=\x2211\x22\x20x2=\x2210\x22\x20y2=\x2217\x22></line><line\x20x1=\x2214\x22\x20y1=\x2211\x22\x20x2=\x2214\x22\x20y2=\x2217\x22></line></svg>',_0x5f1391[_0x3dd791(0x224)]=()=>{const _0x1135a3=_0x3dd791;_0x1e507d[_0x1135a3(0x207)](),validateSaveButton();},_0x1e507d['appendChild'](_0x14a016),_0x1e507d[_0x3dd791(0x23e)](_0x5f1391),_0x178295[_0x3dd791(0x23e)](_0x1e507d),validateSaveButton();}function handleFormStatusChange(){const _0x45476e=a0_0xafc97f,_0x3951cd=document['getElementById'](_0x45476e(0x103))[_0x45476e(0x10a)],_0x185297=getRoleForStatus(_0x3951cd);document['getElementById'](_0x45476e(0x1e8))[_0x45476e(0x177)][_0x45476e(0x24b)]=_0x185297==='to-do'?_0x45476e(0x248):_0x45476e(0x13c),document[_0x45476e(0x203)](_0x45476e(0x1b5))[_0x45476e(0x177)][_0x45476e(0x24b)]=_0x185297===_0x45476e(0x22a)?'flex':_0x45476e(0x248),document[_0x45476e(0x203)](_0x45476e(0x259))['style'][_0x45476e(0x24b)]=_0x185297==='selesai'?'flex':'none',validateSaveButton();}function validateSaveButton(){const _0x1d83b4=a0_0xafc97f,_0x4fc658=document[_0x1d83b4(0x203)](_0x1d83b4(0x13d)),_0xc4a0c4=Array[_0x1d83b4(0x214)](document['getElementById']('brandSelectContainer')[_0x1d83b4(0xea)](_0x1d83b4(0x1e1)))[_0x1d83b4(0x190)](_0x5f650a=>_0x5f650a[_0x1d83b4(0x10a)])[_0x1d83b4(0x210)](Boolean),_0x320989=document[_0x1d83b4(0x203)](_0x1d83b4(0x19f))[_0x1d83b4(0x10a)][_0x1d83b4(0x10e)](),_0x2ef986=document[_0x1d83b4(0x203)]('formStatus')[_0x1d83b4(0x10a)],_0x417e60=getRoleForStatus(_0x2ef986);if(_0xc4a0c4['length']===0x0||_0x417e60===_0x1d83b4(0x22a)&&!_0x320989)_0x4fc658['disabled']=!![];else _0x4fc658[_0x1d83b4(0xf4)]=![];}function bukaModalTambah(){const _0x3c7fcf=a0_0xafc97f;if(!masterConfig[_0x3c7fcf(0x208)])return showToast('Gagal','Sistem\x20belum\x20dikonfigurasi\x20Admin.',_0x3c7fcf(0x12b));document[_0x3c7fcf(0x203)]('modalFormTitle')['innerText']=_0x3c7fcf(0x217),document[_0x3c7fcf(0x203)](_0x3c7fcf(0x157))['value']='',['brand',_0x3c7fcf(0x15a),'platform'][_0x3c7fcf(0x17f)](_0x103943=>document['getElementById'](_0x103943+_0x3c7fcf(0x1df))['innerHTML']=''),tambahDropdown(_0x3c7fcf(0x25a),masterConfig['brands']),tambahDropdown(_0x3c7fcf(0x194),masterConfig[_0x3c7fcf(0x11a)]),tambahDropdown(_0x3c7fcf(0x1b6),masterConfig['platforms']);const _0x3c0d4c=masterConfig[_0x3c7fcf(0x163)]||[];document[_0x3c7fcf(0x203)](_0x3c7fcf(0x103))[_0x3c7fcf(0x10a)]=_0x3c0d4c[_0x3c7fcf(0x244)]>0x0?typeof _0x3c0d4c[0x0]==='string'?_0x3c0d4c[0x0]:_0x3c0d4c[0x0][_0x3c7fcf(0x1e3)]:_0x3c7fcf(0x21b),document[_0x3c7fcf(0x203)](_0x3c7fcf(0xee))[_0x3c7fcf(0x10a)]='',document[_0x3c7fcf(0x203)]('formLink')['value']='',document[_0x3c7fcf(0x203)](_0x3c7fcf(0xff))[_0x3c7fcf(0x10a)]='',handleFormStatusChange(),document[_0x3c7fcf(0x203)](_0x3c7fcf(0x1e4))[_0x3c7fcf(0x10f)][_0x3c7fcf(0x115)](_0x3c7fcf(0x223));}function bukaModalEdit(_0x4d15b7){const _0x55d70d=a0_0xafc97f,_0xb3e222=contentPlans['find'](_0x2d0927=>_0x2d0927['id']===_0x4d15b7);if(!_0xb3e222)return;document[_0x55d70d(0x203)](_0x55d70d(0x221))[_0x55d70d(0x18c)]='Edit\x20Konten\x20Plan',document[_0x55d70d(0x203)](_0x55d70d(0x157))[_0x55d70d(0x10a)]=_0xb3e222['id'],['brand','pic','platform'][_0x55d70d(0x17f)](_0x2dc25e=>document[_0x55d70d(0x203)](_0x2dc25e+_0x55d70d(0x1df))['innerHTML']=''),_0xb3e222[_0x55d70d(0x22e)][_0x55d70d(0x17f)](_0x476935=>tambahDropdown('brandSelectContainer',masterConfig[_0x55d70d(0x213)],_0x476935)),_0xb3e222[_0x55d70d(0x1d5)]['forEach'](_0x28ac6b=>tambahDropdown(_0x55d70d(0x194),masterConfig[_0x55d70d(0x11a)],_0x28ac6b)),_0xb3e222['platform'][_0x55d70d(0x17f)](_0x5bcc65=>tambahDropdown('platformSelectContainer',masterConfig[_0x55d70d(0x20c)],_0x5bcc65));if(document['getElementById']('brandSelectContainer')['children']['length']===0x0)tambahDropdown(_0x55d70d(0x25a),masterConfig['brands']);if(document[_0x55d70d(0x203)](_0x55d70d(0x194))[_0x55d70d(0x1c8)][_0x55d70d(0x244)]===0x0)tambahDropdown(_0x55d70d(0x194),masterConfig[_0x55d70d(0x11a)]);if(document[_0x55d70d(0x203)](_0x55d70d(0x1b6))[_0x55d70d(0x1c8)][_0x55d70d(0x244)]===0x0)tambahDropdown(_0x55d70d(0x1b6),masterConfig[_0x55d70d(0x20c)]);const _0x5b342f=(masterConfig[_0x55d70d(0x163)]||[])['map'](_0x4ecc06=>typeof _0x4ecc06===_0x55d70d(0x220)?_0x4ecc06:_0x4ecc06[_0x55d70d(0x1e3)]);document[_0x55d70d(0x203)](_0x55d70d(0x103))[_0x55d70d(0x1cf)]=_0x5b342f['map'](_0x57ee58=>_0x55d70d(0x17d)+_0x57ee58+'\x22>'+_0x57ee58+_0x55d70d(0xf8))[_0x55d70d(0x23c)]('');if(!_0x5b342f[_0x55d70d(0x192)](_0xb3e222['status']))document[_0x55d70d(0x203)](_0x55d70d(0x103))['innerHTML']+=_0x55d70d(0x17d)+_0xb3e222[_0x55d70d(0x15f)]+_0x55d70d(0x10c)+_0xb3e222[_0x55d70d(0x15f)]+_0x55d70d(0xf8);document[_0x55d70d(0x203)](_0x55d70d(0x103))[_0x55d70d(0x10a)]=_0xb3e222[_0x55d70d(0x15f)],document['getElementById'](_0x55d70d(0x155))[_0x55d70d(0x1cf)]=(masterConfig[_0x55d70d(0x17c)]||[])[_0x55d70d(0x190)](_0xa28da6=>_0x55d70d(0x17d)+_0xa28da6+'\x22>'+_0xa28da6+_0x55d70d(0xf8))[_0x55d70d(0x23c)]('');if(!(masterConfig[_0x55d70d(0x17c)]||[])[_0x55d70d(0x192)](_0xb3e222[_0x55d70d(0x119)]))document[_0x55d70d(0x203)](_0x55d70d(0x155))[_0x55d70d(0x1cf)]+='<option\x20value=\x22'+_0xb3e222[_0x55d70d(0x119)]+_0x55d70d(0x10c)+_0xb3e222[_0x55d70d(0x119)]+_0x55d70d(0xf8);document[_0x55d70d(0x203)]('formTipeKonten')[_0x55d70d(0x10a)]=_0xb3e222['tipeKonten'];let _0x55eebf='';if(_0xb3e222[_0x55d70d(0x23d)]){let _0x1e5542=_0xb3e222['deadline'][_0x55d70d(0x182)]('\x20','T');if(_0x1e5542[_0x55d70d(0x244)]===0x10)_0x1e5542+=_0x55d70d(0x232);const _0x31d09e=new Date(_0x1e5542);!isNaN(_0x31d09e['getTime']())&&(_0x55eebf=new Date(_0x31d09e[_0x55d70d(0x1b3)]()-_0x31d09e[_0x55d70d(0x1d3)]()*0xea60)['toISOString']()['slice'](0x0,0x10));}document[_0x55d70d(0x203)](_0x55d70d(0xee))['value']=_0x55eebf,document[_0x55d70d(0x203)](_0x55d70d(0x19f))[_0x55d70d(0x10a)]=_0xb3e222['link'],document[_0x55d70d(0x203)](_0x55d70d(0xff))[_0x55d70d(0x10a)]=_0xb3e222[_0x55d70d(0x152)],handleFormStatusChange(),document[_0x55d70d(0x203)](_0x55d70d(0x1e4))[_0x55d70d(0x10f)][_0x55d70d(0x115)]('active');}function tutupModalForm(){const _0x1e8412=a0_0xafc97f;document[_0x1e8412(0x203)](_0x1e8412(0x1e4))[_0x1e8412(0x10f)][_0x1e8412(0x207)](_0x1e8412(0x223));}async function simpanFormData(){const _0x5983a3=a0_0xafc97f,_0x3b943c=document[_0x5983a3(0x203)](_0x5983a3(0x13d));_0x3b943c[_0x5983a3(0x18c)]='Menyimpan...';const _0x1d4d0d={'id':document[_0x5983a3(0x203)](_0x5983a3(0x157))['value']||null,'brand':Array[_0x5983a3(0x214)](document['getElementById'](_0x5983a3(0x25a))[_0x5983a3(0xea)](_0x5983a3(0x1e1)))[_0x5983a3(0x190)](_0x58893d=>_0x58893d[_0x5983a3(0x10a)])[_0x5983a3(0x210)](Boolean),'status':document[_0x5983a3(0x203)](_0x5983a3(0x103))[_0x5983a3(0x10a)],'penanggungJawab':Array[_0x5983a3(0x214)](document[_0x5983a3(0x203)](_0x5983a3(0x194))[_0x5983a3(0xea)](_0x5983a3(0x1e1)))[_0x5983a3(0x190)](_0x9ab501=>_0x9ab501[_0x5983a3(0x10a)])[_0x5983a3(0x210)](Boolean),'tipeKonten':document['getElementById'](_0x5983a3(0x155))[_0x5983a3(0x10a)],'platform':Array[_0x5983a3(0x214)](document[_0x5983a3(0x203)](_0x5983a3(0x1b6))['querySelectorAll'](_0x5983a3(0x1e1)))[_0x5983a3(0x190)](_0x1c4621=>_0x1c4621[_0x5983a3(0x10a)])[_0x5983a3(0x210)](Boolean),'deadline':document[_0x5983a3(0x203)](_0x5983a3(0xee))[_0x5983a3(0x10a)]?document[_0x5983a3(0x203)](_0x5983a3(0xee))[_0x5983a3(0x10a)]+':00':null,'link':document['getElementById'](_0x5983a3(0x19f))[_0x5983a3(0x10a)],'catatan':document[_0x5983a3(0x203)](_0x5983a3(0xff))[_0x5983a3(0x10a)]};if(_0x1d4d0d[_0x5983a3(0x1d5)]['length']===0x0)_0x1d4d0d[_0x5983a3(0x1d5)]=[_0x5983a3(0x1f7)];const _0x4f1f32=await fetchAPI('saveData',{'data':_0x1d4d0d});_0x3b943c[_0x5983a3(0x18c)]=_0x5983a3(0x1f2),_0x4f1f32&&_0x4f1f32[_0x5983a3(0x15f)]===_0x5983a3(0x1da)?(showToast(_0x5983a3(0x153),'Data\x20tersimpan\x20di\x20Spreadsheet','success'),tutupModalForm(),pollData()):showToast(_0x5983a3(0x181),_0x4f1f32?.[_0x5983a3(0x117)]||_0x5983a3(0x135),'error');}a0_0xafc97f(0x104)in navigator&&window[a0_0xafc97f(0x234)]('load',()=>{const _0x37c2d2=a0_0xafc97f;navigator[_0x37c2d2(0x104)][_0x37c2d2(0x1f4)](_0x37c2d2(0x160))[_0x37c2d2(0x14e)](_0x151489=>console['log'](_0x37c2d2(0x129),_0x151489));});let deferredPrompt;const banner=document[a0_0xafc97f(0x203)](a0_0xafc97f(0x1d2));function a0_0x1a6b(){const _0x327ec6=['Tipe\x20Konten','catatan','Berhasil',')\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<svg\x20width=\x2214\x22\x20height=\x2214\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22><path\x20d=\x22M11\x204H4a2\x202\x200\x200\x200-2\x202v14a2\x202\x200\x200\x200\x202\x202h14a2\x202\x200\x200\x200\x202-2v-7\x22></path><path\x20d=\x22M18.5\x202.5a2.121\x202.121\x200\x200\x201\x203\x203L12\x2015l-4\x201\x201-4\x209.5-9.5z\x22></path></svg>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn-card-action\x20delete\x22\x20onclick=\x22hapusData(','formTipeKonten','sheets','formId','short','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22card-header-actions\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22btn-card-action\x20edit\x22\x20onclick=\x22bukaModalEdit(','pic','Status','this_week','center','click','status','sw.js','filterTimeMode','padStart','userStatuses','middle','colCatatan','.dynamic-select-row','>Sifat:\x20To-Do\x20(Tanpa\x20Waktu)</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22on-progress\x22\x20','getDate','\x22\x20id=\x22card-','</div></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22detail-row\x22><span\x20class=\x22detail-label\x22>Tipe</span><div\x20class=\x22scroll-x-container\x22><span\x20class=\x22type-capsule\x22>','pattern','stringify','userChoice','880584UXPVkn','numeric','</a>','</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22detail-row\x22><span\x20class=\x22detail-label\x22>PIC</span><div\x20class=\x22scroll-x-container\x22>','columns','ALL','ssName','closest','Aplikasi\x20terinstall\x20di\x20layar\x20utama!','style','true','customConfirmModal','</span>','adminStatusMendesak','tipes','<option\x20value=\x22','thin','forEach','\x20Jam,\x20','Gagal','replace','filterRangeEnd','Mempersiapkan\x20File','22448PFtZeJ','mendesak','card\x20','</span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','1491511rOhMAy','Platform','download','innerText','platform','407ByHEuZ','</span></div></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22detail-row\x22><span\x20class=\x22detail-label\x22>Platform</span><div\x20class=\x22scroll-x-container\x22>','map','badge\x20terlambat','includes','adminSettingsView','picSelectContainer','https://script.google.com/macros/s/AKfycbwNBmQRK2qXvgH1rguYnami5nmdv2pe6MR6isQx0sUVGCo5jhvLFbemvMjUX_fyJlIDRw/exec','on-progress','&key=','<a\x20class=\x22completed-clickable-box\x22\x20href=\x22','2099-01-01','colDeadline','colTimeDetail','admin','colPIC','Jalankan\x20Migrasi','formLink','(X)\x20','xlsx','className','Range','FF38BDF8','contains','toDateString','Unauthorized','div','ABCDEFGHIJKLMNOPQRSTUVWXYZ','KontenPlan_','Menyimpan...','card-selesai','target','options','type','block','colPlatform','data-modified','getTime','toUpperCase','groupFormLink','platformSelectContainer','alignment','accepted','pwa_prompt_dismissed','groupYear','adminListPICs','specific_date','Data\x20Konten','groupRange','colTipe','sort','beforeinstallprompt','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22to-do\x22\x20','adminMigrationView','Sukses','</div>','<div\x20class=\x22completed-field-group\x22><span\x20class=\x22completed-field-label\x22>Catatan\x20/\x20Kendala:</span><textarea\x20class=\x22completed-textarea-box\x22\x20readonly\x20rows=\x222\x22>','setAttribute','children','filterModal','Catatan','2686DNWrfF','btn-remove-item','getFullYear','adminModal','innerHTML','saveConfig','appinstalled','installBanner','getTimezoneOffset','POST','penanggungJawab','Menghapus...','searchInput','migMappingContainer','(X)','success',')\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<svg\x20width=\x2214\x22\x20height=\x2214\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22><polyline\x20points=\x223\x206\x205\x206\x2021\x206\x22></polyline><path\x20d=\x22M19\x206v14a2\x202\x200\x200\x201-2\x202H7a2\x202\x200\x200\x201-2-2V6m3\x200V4a2\x202\x200\x200\x201\x202-2h4a2\x202\x200\x200\x201\x202\x202v2\x22></path><line\x20x1=\x2210\x22\x20y1=\x2211\x22\x20x2=\x2210\x22\x20y2=\x2217\x22></line><line\x20x1=\x2214\x22\x20y1=\x2211\x22\x20x2=\x2214\x22\x20y2=\x2217\x22></line></svg>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22card-details\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22detail-row\x22><span\x20class=\x22detail-label\x22>Status</span><span\x20class=\x22badge\x20','Minimal\x20harus\x20ada\x201\x20pilihan.','toLocaleDateString','mig','SelectContainer','<span\x20class=\x22brand-capsule\x20','select','<svg\x20width=\x2214\x22\x20height=\x2214\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22><polyline\x20points=\x223\x206\x205\x206\x2021\x206\x22></polyline><path\x20d=\x22M19\x206v14a2\x202\x200\x200\x201-2\x202H7a2\x202\x200\x200\x201-2-2V6m3\x200V4a2\x202\x200\x200\x201\x202-2h4a2\x202\x200\x200\x201\x202\x202v2\x22></path><line\x20x1=\x2210\x22\x20y1=\x2211\x22\x20x2=\x2210\x22\x20y2=\x2217\x22></line><line\x20x1=\x2214\x22\x20y1=\x2211\x22\x20x2=\x2214\x22\x20y2=\x2217\x22></line></svg>','name','formModal','some','Gagal\x20Migrasi','loadingStatus','groupFormDeadline','Key\x20Salah!','getCell','btnSaveAdminConfig','<span\x20class=\x22pj-capsule\x20','mainMappingContainer','card-needs-update','href','TO-DO','today','Simpan','\x22\x20id=\x22badge-','register','font','?action=','Tidak\x20Ada','input','</span><span\x20class=\x22toast-desc\x22>','createElement','.countdown-timer','<div\x20class=\x22completed-clickable-box\x22\x20style=\x22cursor:default;color:#cbd5e1;\x22>','text/csv;charset=utf-8;','PIC','sync','127qmsDjr','split','filterRangeStart','getElementById','list','solid','*Admin123','remove','spreadsheetUrl','prompt','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<hr\x20class=\x22divider\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22completed-section\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22completed-field-group\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22completed-field-label\x22>Link\x20Hasil\x20Konten:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','config','platforms','adminStatusTerlambat','\x20Hari,\x20','adminSSUrl','filter','customConfirmMessage','Migrasi\x20Berhasil','brands','from','<svg\x20width=\x2214\x22\x20height=\x2214\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22><rect\x20x=\x223\x22\x20y=\x224\x22\x20width=\x2218\x22\x20height=\x2218\x22\x20rx=\x222\x22></rect><line\x20x1=\x2216\x22\x20y1=\x222\x22\x20x2=\x2216\x22\x20y2=\x226\x22></line><line\x20x1=\x228\x22\x20y1=\x222\x22\x20x2=\x228\x22\x20y2=\x226\x22></line><line\x20x1=\x223\x22\x20y1=\x2210\x22\x20x2=\x2221\x22\x20y2=\x2210\x22></line></svg>\x20Catatan\x20/\x20To\x20Do','custom_range','Tambah\x20Konten\x20Plan','every','<div\x20class=\x22date-group-header\x22>','specific_hour','ON-PROGRESS','group','role','Deadline','<option\x20value=\x22\x22>--\x20Pilih\x20--</option>','string','modalFormTitle','false','active','onclick','70245PANKap','contentPlanList','data','toast-alert\x20','querySelector','selesai','undefined','invalid','toISOString','brand','10USFrdV','Tidak\x20ada\x20data\x20untuk\x20diunduh\x20(terlalu\x20banyak\x20filter).','URL\x20Spreadsheet\x20kosong',':00','\x22>Menghitung...</span></div>','addEventListener','filterBrand','Peringatan','getHours','colStatus','<option\x20value=\x22ALL\x22>Semua</option>','<svg\x20width=\x2215\x22\x20height=\x2215\x22\x20viewBox=\x220\x200\x2024\x2024\x22\x20fill=\x22none\x22\x20stroke=\x22currentColor\x22\x20stroke-width=\x222\x22\x20stroke-linecap=\x22round\x22\x20stroke-linejoin=\x22round\x22\x20style=\x22margin-right:4px;\x22><path\x20d=\x22M19\x2021H5a2\x202\x200\x200\x201-2-2V5a2\x202\x200\x200\x201\x202-2h11l5\x205v11a2\x202\x200\x200\x201-2\x202z\x22></path><polyline\x20points=\x2217\x2021\x2017\x2013\x207\x2013\x207\x2021\x22></polyline><polyline\x20points=\x227\x203\x207\x208\x2015\x208\x22></polyline></svg>\x20Simpan\x20Config','Loading...','join','deadline','appendChild','colLink','\x22\x20selected>(Dihapus\x20Admin)\x20','Brand','addWorksheet','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22card-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22brand-badges-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','length','filterSpecificYear','link','to-do','none','Lengkapi\x20seluruh\x20field\x20wajib','json','display','colBrand','protocol','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','sheetName','setDate','addRow','getRow','FFCCCCCC','T23:59:59','tipe','stopPropagation','<span\x20class=\x22deadline-badge\x22>','downloadMenu','groupFormCatatan','brandSelectContainer','mCol','filterStatus','systemStatusTerlambat','querySelectorAll','selected','</div></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22detail-row\x22><span\x20class=\x22detail-label\x22>Deadline</span><span\x20class=\x22detail-value\x22>','adminStartRow','formDeadline','CATATAN','171YFNvMb','dataValidation','long','setHours','disabled','key','Mengunduh\x20data\x20Excel\x20berwarna...','SheetName','</option>','badge\x20on-progress','adminListBrands','oninput','158810wQHDEt','floor','max','formCatatan','\x22\x20target=\x22_blank\x22\x20rel=\x22noopener\x20noreferrer\x22>','<div\x20class=\x22toast-content\x22><span\x20class=\x22toast-title\x22>','border','formStatus','serviceWorker','<div\x20class=\x22empty-state\x22>Tidak\x20ada\x20data\x20konten\x20yang\x20cocok.</div>','id-ID','#fff','.csv','adminSSUrlDisplay','value','Load','\x22\x20selected>','toastContainer','trim','classList','badge\x20mendesak','Tipe','deleteData','var(--glow-pj)','Year','add','button','message','Sheet\x20berhasil\x20di-load.','tipeKonten','pics','</textarea></div>','body','color','SorEmzpcP6OTvRxgUuJDmjQkTOPopcuA','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','T00:00:00','eachCell','toLowerCase','SELESAI','filterSpecificHour','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','card-','btnConfirmAction','</span></div>','SW\x20Registration\x20failed:','saveData','error','grid','<span\x20class=\x22platform-capsule\x20','push','preventDefault','dynamic-select-row','\x20Menit,\x20','StartRow','Hour','show','Terjadi\x20kesalahan\x20saat\x20menyimpan','find','col','getMinutes','getDay','writeBuffer','URL\x20tidak\x20valid/tidak\x20ada\x20akses.','flex','btnSubmitForm','systemStatusMendesak','placeholder','text','.card','toString','Mohon\x20tunggu','663630QkSxka','.xlsx','<hr\x20class=\x22divider\x22><div\x20class=\x22countdown-container\x22><span>Countdown:</span><span\x20class=\x22countdown-timer\x22\x20data-target=\x22','\x22>Kolom\x20','Link','<span\x20class=\x22deadline-badge\x22>Hanya\x20Catatan</span>','0\x20Hari,\x200\x20Jam,\x200\x20Menit,\x200\x20Detik','Workbook','terlambat','>Sifat:\x20Selesai\x20(Wajib\x20Link)</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','catch','Hapus\x20baris\x20ini\x20dari\x20spreadsheet?','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22'];a0_0x1a6b=function(){return _0x327ec6;};return a0_0x1a6b();}window[a0_0xafc97f(0x234)](a0_0xafc97f(0x1c1),_0xba9fa6=>{const _0x3a118a=a0_0xafc97f;_0xba9fa6[_0x3a118a(0x12f)](),deferredPrompt=_0xba9fa6;const _0x22cbb9=sessionStorage['getItem']('pwa_prompt_dismissed');!_0x22cbb9&&banner&&setTimeout(()=>{const _0x1b0051=_0x3a118a;banner[_0x1b0051(0x10f)]['add'](_0x1b0051(0x134));},0x5dc);});async function jalankanInstallPWA(){const _0x8eeb0c=a0_0xafc97f;if(!deferredPrompt)return;deferredPrompt[_0x8eeb0c(0x209)]();const {outcome:_0x22571b}=await deferredPrompt[_0x8eeb0c(0x16d)];_0x22571b===_0x8eeb0c(0x1b8)&&banner[_0x8eeb0c(0x10f)][_0x8eeb0c(0x207)](_0x8eeb0c(0x134)),deferredPrompt=null;}function tutupBannerPWA(){const _0x51ebe0=a0_0xafc97f;banner&&(banner['classList'][_0x51ebe0(0x207)](_0x51ebe0(0x134)),sessionStorage['setItem'](_0x51ebe0(0x1b9),_0x51ebe0(0x178)));}window[a0_0xafc97f(0x234)](a0_0xafc97f(0x1d1),()=>{const _0x26ebb8=a0_0xafc97f;if(banner)banner[_0x26ebb8(0x10f)]['remove'](_0x26ebb8(0x134));showToast(_0x26ebb8(0x1c4),_0x26ebb8(0x176),'success');}),setInterval(jalankanCountdown,0x3e8),initApp();
+const API_KEY = "SorEmzpcP6OTvRxgUuJDmjQkTOPopcuA";
+const WEB_APP_URLS = ["https://script.google.com/macros/s/AKfycbwNBmQRK2qXvgH1rguYnami5nmdv2pe6MR6isQx0sUVGCo5jhvLFbemvMjUX_fyJlIDRw/exec"];
+let currentEndpointIndex = 0;
+
+let masterConfig = {
+    brands: [],
+    userStatuses: [
+        { name: "TO-DO", role: "to-do" },
+        { name: "ON-PROGRESS", role: "on-progress" },
+        { name: "SELESAI", role: "selesai" }
+    ],
+    systemStatusMendesak: "mendesak",
+    systemStatusTerlambat: "terlambat",
+    pics: [],
+    tipes: [],
+    platforms: [],
+    spreadsheetUrl: "",
+    sheetName: "",
+    startRow: 2,
+    columns: { brand: 1, status: 2, pic: 3, tipe: 4, platform: 5, deadline: 6, link: 7, catatan: 8 }
+};
+
+let contentPlans = [];
+let configHash = '';
+let dataHash = '';
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+let confirmActionCallback = null;
+
+// ==========================================
+// INISIALISASI & KONEKSI API
+// ==========================================
+async function initApp() {
+    document.getElementById("loadingStatus").style.display = "block";
+    initColDropdowns();
+    await pollData();
+    setInterval(pollData, 5000);
+    setInterval(jalankanCountdown, 1000);
+}
+
+async function fetchAPI(action, payload = null) {
+    let attempt = 0;
+    while (attempt < WEB_APP_URLS.length) {
+        try {
+            let url = WEB_APP_URLS[currentEndpointIndex] + "?action=" + action + "&key=" + API_KEY;
+            let options = payload ? { method: "POST", body: JSON.stringify(payload) } : {};
+            
+            const req = await fetch(url, options);
+            const res = await req.json();
+            
+            if (res.status === 'error') throw new Error(res.message);
+            return res;
+        } catch (err) {
+            currentEndpointIndex = (currentEndpointIndex + 1) % WEB_APP_URLS.length;
+            attempt++;
+        }
+    }
+    return null;
+}
+
+async function pollData() {
+    const response = await fetchAPI("sync");
+    if (response && response.config && response.data) {
+        const newConfigHash = JSON.stringify(response.config);
+        const newDataHash = JSON.stringify(response.data);
+
+        if (newConfigHash !== configHash) {
+            masterConfig = Object.assign({}, masterConfig, response.config);
+            configHash = newConfigHash;
+            updateFilterOptions();
+            
+            if (response.ssName && document.getElementById('adminSSUrlDisplay').getAttribute('data-modified') !== 'true') {
+                document.getElementById('adminSSUrlDisplay').value = response.ssName;
+                document.getElementById('adminSSUrlDisplay').style.color = '#fff';
+            }
+        }
+
+        if (newDataHash !== dataHash) {
+            contentPlans = response.data;
+            dataHash = newDataHash;
+            renderContent();
+        }
+        document.getElementById('loadingStatus').style.display = "none";
+    }
+}
+
+// ==========================================
+// LOGIKA PENCARIAN & RENDER KONTEN (SVG ASLI & EDIT/HAPUS)
+// ==========================================
+function handleSearch() {
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput.value === "*Admin123") {
+        bukaAdmin();
+        searchInput.value = "";
+    } else {
+        renderContent();
+    }
+}
+
+function filterLogic(plan) {
+    const searchInput = document.getElementById("searchInput");
+    const keyword = searchInput ? searchInput.value.toLowerCase() : "";
+    
+    if (keyword) {
+        const matchBrand = (plan.brand || []).join(" ").toLowerCase().includes(keyword);
+        const matchStatus = (plan.status || "").toLowerCase().includes(keyword);
+        const matchPIC = (plan.penanggungJawab || []).join(" ").toLowerCase().includes(keyword);
+        const matchCatatan = (plan.catatan || "").toLowerCase().includes(keyword);
+        if (!matchBrand && !matchStatus && !matchPIC && !matchCatatan) return false;
+    }
+    
+    const filterStatus = document.getElementById("filterStatus").value;
+    if (filterStatus !== "ALL" && getRoleForStatus(plan.status) !== getRoleForStatus(filterStatus) && plan.status !== filterStatus) return false;
+    
+    const filterBrand = document.getElementById("filterBrand").value;
+    if (filterBrand !== "ALL" && !(plan.brand || []).includes(filterBrand)) return false;
+
+    return true;
+}
+
+function renderContent() {
+    const container = document.getElementById("contentPlanList");
+    container.innerHTML = '';
+    
+    let filteredPlans = contentPlans.filter(filterLogic);
+    if (filteredPlans.length === 0) {
+        container.innerHTML = '<div class="empty-state">Tidak ada data konten yang cocok.</div>';
+        return;
+    }
+
+    filteredPlans.forEach(plan => {
+        let statusClass = plan.status.toLowerCase().replace(/\s+/g, '-');
+        let cardHTML = `
+        <div class="card card-${statusClass}" id="card-${plan.id}">
+            <div class="card-header">
+                <div class="brand-badges-header">
+                    ${(plan.brand || []).map(b => `<span class="brand-capsule">${b}</span>`).join('')}
+                </div>
+                <div class="card-header-actions">
+                    <button class="btn-card-action edit" onclick="bukaModalEdit(${plan.id})">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    </button>
+                    <button class="btn-card-action delete" onclick="hapusData(${plan.id})">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="detail-row"><span class="detail-label">Status</span><span class="badge ${statusClass}">${plan.status}</span></div>
+                <div class="detail-row"><span class="detail-label">PIC</span><div class="scroll-x-container">${(plan.penanggungJawab || []).map(p => `<span class="pj-capsule">${p}</span>`).join('')}</div></div>
+                <div class="detail-row"><span class="detail-label">Tipe</span><span class="type-capsule">${plan.tipeKonten || "-"}</span></div>
+                <div class="detail-row"><span class="detail-label">Platform</span><div class="scroll-x-container">${(plan.platform || []).map(p => `<span class="platform-capsule ${p.toLowerCase()}">${p}</span>`).join('')}</div></div>
+                <div class="detail-row"><span class="detail-label">Deadline</span><span class="deadline-badge">${plan.deadline ? new Date(plan.deadline).toLocaleString('id-ID') : "-"}</span></div>
+                ${plan.deadline && statusClass !== 'selesai' && statusClass !== 'keterangan' ? `<div class="countdown-container"><span class="detail-label">Waktu Tersisa:</span><span class="countdown-timer" data-target="${plan.deadline}">Menghitung...</span></div>` : ''}
+            </div>
+            ${plan.catatan || plan.link ? `
+            <div class="completed-section">
+                ${plan.link ? `<div class="completed-field-group"><span class="completed-field-label">Link Hasil:</span><a href="${plan.link}" target="_blank" class="completed-clickable-box">${plan.link}</a></div>` : ''}
+                ${plan.catatan ? `<div class="completed-field-group"><span class="completed-field-label">Catatan:</span><textarea class="completed-textarea-box" readonly rows="2">${plan.catatan}</textarea></div>` : ''}
+            </div>` : ''}
+        </div>`;
+        container.innerHTML += cardHTML;
+    });
+}
+
+function jalankanCountdown() {
+    const now = new Date().getTime();
+    document.querySelectorAll('.countdown-timer').forEach(el => {
+        const targetDate = new Date(el.getAttribute('data-target')).getTime();
+        if (isNaN(targetDate)) return;
+
+        const diff = targetDate - now;
+        if (diff <= 0) {
+            el.innerText = "Terlambat";
+        } else {
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            el.innerText = `${days} Hari, ${hours} Jam, ${minutes} Menit, ${seconds} Detik`;
+        }
+    });
+}
+
+// ==========================================
+// KONTEN FORM (TAMBAH / EDIT)
+// ==========================================
+function getRoleForStatus(statusName) {
+    if (!statusName || !masterConfig.userStatuses) return 'on-progress';
+    const found = masterConfig.userStatuses.find(s => s.name && s.name.toUpperCase() === statusName.toUpperCase());
+    return found ? (found.role || 'on-progress').toLowerCase() : 'on-progress';
+}
+
+function handleFormStatusChange() {
+    const statusVal = document.getElementById("formStatus").value;
+    const role = getRoleForStatus(statusVal);
+    
+    // PERBAIKAN: Sembunyikan Deadline jika sifatnya 'to-do' ATAU 'keterangan'
+    if (role === 'to-do' || role === 'keterangan') {
+        document.getElementById("groupFormDeadline").style.display = 'none';
+    } else {
+        document.getElementById("groupFormDeadline").style.display = 'flex';
+    }
+    
+    document.getElementById("groupFormLink").style.display = role === 'selesai' ? 'flex' : 'none';
+    
+    // Teks Area Catatan hanya muncul saat Keterangan
+    const groupCatatan = document.getElementById("groupFormCatatan");
+    const labelCatatan = document.getElementById("labelFormCatatan") || groupCatatan.querySelector("label");
+    
+    if (role === 'keterangan') {
+        groupCatatan.style.display = "flex";
+        labelCatatan.innerHTML = 'Catatan / Kendala <span style="color:#ef4444">(Wajib diisi)</span>';
+    } else {
+        groupCatatan.style.display = "none"; 
+    }
+    
+    validateSaveButton();
+}
+
+
+function validateSaveButton() {
+    const btnSubmit = document.getElementById("btnSubmitForm");
+    if (!btnSubmit) return;
+
+    const statusVal = document.getElementById("formStatus").value;
+    const role = getRoleForStatus(statusVal);
+    const catatan = document.getElementById("formCatatan").value.trim();
+    const link = document.getElementById("formLink") ? document.getElementById("formLink").value.trim() : "";
+    const brandSelected = Array.from(document.querySelectorAll("#brandSelectContainer select")).map(el => el.value).filter(Boolean);
+    
+    let isValid = true;
+    if (brandSelected.length === 0) isValid = false;
+    if (role === 'keterangan' && catatan === '') isValid = false;
+    if (role === 'selesai' && link === '') isValid = false;
+
+    btnSubmit.disabled = !isValid;
+}
+
+function bukaModalTambah() {
+    document.getElementById("modalFormTitle").innerText = "Tambah Konten Plan";
+    document.getElementById("formId").value = "";
+    document.getElementById("formLink").value = "";
+    document.getElementById("formCatatan").value = "";
+    
+    document.getElementById("brandSelectContainer").innerHTML = "";
+    document.getElementById("picSelectContainer").innerHTML = "";
+    document.getElementById("platformSelectContainer").innerHTML = "";
+    
+    tambahDropdown("brandSelectContainer", masterConfig.brands);
+    tambahDropdown("picSelectContainer", masterConfig.pics);
+    tambahDropdown("platformSelectContainer", masterConfig.platforms);
+    
+    const formStatus = document.getElementById("formStatus");
+    formStatus.innerHTML = masterConfig.userStatuses.map(s => `<option value="${s.name}">${s.name}</option>`).join('');
+    
+    const formTipe = document.getElementById("formTipeKonten");
+    formTipe.innerHTML = masterConfig.tipes.map(t => `<option value="${t}">${t}</option>`).join('');
+    
+    document.getElementById("formDeadline").value = "";
+    
+    handleFormStatusChange();
+    document.getElementById("formModal").classList.add("active");
+}
+
+function bukaModalEdit(id) {
+    const plan = contentPlans.find(p => p.id === id);
+    if (!plan) return;
+    
+    document.getElementById("modalFormTitle").innerText = "Edit Konten Plan";
+    document.getElementById("formId").value = plan.id;
+    
+    ['brand', 'pic', 'platform'].forEach(prefix => document.getElementById(prefix + "SelectContainer").innerHTML = "");
+    
+    plan.brand.forEach(b => tambahDropdown("brandSelectContainer", masterConfig.brands, b));
+    plan.penanggungJawab.forEach(p => tambahDropdown("picSelectContainer", masterConfig.pics, p));
+    plan.platform.forEach(p => tambahDropdown("platformSelectContainer", masterConfig.platforms, p));
+    
+    if (document.getElementById("brandSelectContainer").children.length === 0) tambahDropdown("brandSelectContainer", masterConfig.brands);
+    if (document.getElementById("picSelectContainer").children.length === 0) tambahDropdown("picSelectContainer", masterConfig.pics);
+    if (document.getElementById("platformSelectContainer").children.length === 0) tambahDropdown("platformSelectContainer", masterConfig.platforms);
+    
+    const formStatus = document.getElementById("formStatus");
+    const userStatuses = masterConfig.userStatuses || [];
+    formStatus.innerHTML = userStatuses.map(s => `<option value="${s.name || s}">${s.name || s}</option>`).join('');
+    if (!userStatuses.map(s => s.name || s).includes(plan.status)) {
+        formStatus.innerHTML += `<option value="${plan.status}" selected>${plan.status}</option>`;
+    }
+    formStatus.value = plan.status;
+    
+    const formTipe = document.getElementById("formTipeKonten");
+    formTipe.innerHTML = (masterConfig.tipes || []).map(t => `<option value="${t}">${t}</option>`).join('');
+    if (!(masterConfig.tipes || []).includes(plan.tipeKonten)) {
+        formTipe.innerHTML += `<option value="${plan.tipeKonten}">${plan.tipeKonten}</option>`;
+    }
+    formTipe.value = plan.tipeKonten;
+    
+    let deadlineIso = "";
+    if (plan.deadline) {
+        let dl = plan.deadline.replace(' ', 'T');
+        if (dl.length === 16) dl += ":00";
+        const d = new Date(dl);
+        if (!isNaN(d.getTime())) {
+            deadlineIso = new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
+        }
+    }
+    document.getElementById("formDeadline").value = deadlineIso;
+    document.getElementById("formLink").value = plan.link || "";
+    document.getElementById("formCatatan").value = plan.catatan || "";
+    
+    handleFormStatusChange();
+    document.getElementById("formModal").classList.add("active");
+}
+
+function tutupModalForm() {
+    document.getElementById("formModal").classList.remove("active");
+}
+
+function tambahDropdown(containerId, optionsList, selectedValue = "") {
+    const container = document.getElementById(containerId);
+    const div = document.createElement("div");
+    div.className = "dynamic-select-row";
+    
+    let optionsHTML = `<option value="">-- Pilih --</option>` + (optionsList || []).map(opt => `<option value="${opt}" ${opt === selectedValue ? 'selected' : ''}>${opt}</option>`).join('');
+    
+    div.innerHTML = `
+        <select style="flex:1" class="${containerId}-select" onchange="validateSaveButton()">${optionsHTML}</select>
+        <button type="button" class="btn-remove-item" onclick="this.parentElement.remove(); validateSaveButton();">✕</button>
+    `;
+    container.appendChild(div);
+    validateSaveButton();
+}
+
+async function simpanFormData() {
+    const btnSubmit = document.getElementById("btnSubmitForm");
+    const statusVal = document.getElementById("formStatus").value;
+    const role = getRoleForStatus(statusVal);
+    const catatan = document.getElementById("formCatatan").value.trim();
+
+    if (role === 'keterangan' && catatan === '') {
+        return showToast("Gagal", "Catatan wajib diisi untuk status Keterangan!", "error");
+    }
+
+    const brand = Array.from(document.querySelectorAll(".brandSelectContainer-select")).map(el => el.value).filter(Boolean);
+    const penanggungJawab = Array.from(document.querySelectorAll(".picSelectContainer-select")).map(el => el.value).filter(Boolean);
+    const platform = Array.from(document.querySelectorAll(".platformSelectContainer-select")).map(el => el.value).filter(Boolean);
+
+    const payloadData = {
+        id: document.getElementById("formId").value || null,
+        brand: brand,
+        status: statusVal,
+        penanggungJawab: penanggungJawab,
+        tipeKonten: document.getElementById("formTipeKonten").value,
+        platform: platform,
+        deadline: document.getElementById("formDeadline").value ? document.getElementById("formDeadline").value + ":00" : null,
+        link: document.getElementById("formLink").value.trim(),
+        catatan: role === 'keterangan' ? catatan : (document.getElementById("formCatatan").value.trim() || "")
+    };
+
+    btnSubmit.disabled = true;
+    btnSubmit.innerText = "Menyimpan...";
+
+    try {
+        const res = await fetchAPI("saveData", { data: payloadData });
+        if(res && res.status === 'success') {
+            showToast("Sukses", "Data berhasil disimpan!");
+            tutupModalForm();
+            pollData();
+        } else {
+            showToast("Gagal", res ? res.message : "Kesalahan server", "error");
+        }
+    } catch (e) {
+        showToast("Gagal", "Terjadi kesalahan sistem", "error");
+    } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = "Simpan";
+    }
+}
+
+function hapusData(id) {
+    showCustomConfirm("Apakah Anda yakin ingin menghapus data ini?", async () => {
+        showToast("Proses", "Menghapus data...");
+        await fetchAPI("deleteData", { row: id });
+        pollData();
+    });
+}
+
+// ==========================================
+// MODE ADMIN (ASLI)
+// ==========================================
+function initColDropdowns() {
+    ['mainMappingContainer', 'migMappingContainer'].forEach(containerId => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const selects = container.querySelectorAll('select');
+        selects.forEach((select, index) => {
+            select.innerHTML = '';
+            alphabet.forEach((letter, i) => { select.innerHTML += `<option value="${i + 1}">Kolom ${letter}</option>`; });
+            select.value = (index + 1).toString();
+            select.onchange = () => refreshMappingDropdowns(containerId);
+        });
+        refreshMappingDropdowns(containerId);
+    });
+}
+
+function refreshMappingDropdowns(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const selects = Array.from(container.querySelectorAll('select'));
+    const selectedValues = selects.map(s => s.value);
+    selects.forEach(select => {
+        const currentVal = select.value;
+        Array.from(select.options).forEach(option => {
+            option.disabled = (option.value !== currentVal && selectedValues.includes(option.value));
+        });
+    });
+}
+
+function handleUrlInput() {
+    const urlDisplay = document.getElementById('adminSSUrlDisplay');
+    document.getElementById('adminSSUrl').value = urlDisplay.value;
+    urlDisplay.style.color = '#fff';
+    urlDisplay.setAttribute('data-modified', 'true');
+    validateAdminSaveButton();
+}
+
+function bukaAdmin() {
+    document.getElementById("adminModal").classList.add("active");
+    document.getElementById("adminSettingsView").style.display = "block";
+    document.getElementById("adminMigrationView").style.display = "none";
+    
+    document.getElementById("adminSSUrlDisplay").value = masterConfig.spreadsheetUrl || "";
+    document.getElementById("adminSSUrl").value = masterConfig.spreadsheetUrl || "";
+    document.getElementById("adminStartRow").value = Math.max(parseInt(masterConfig.startRow) || 2, 2);
+
+    const cols = masterConfig.columns || { brand: 1, status: 2, pic: 3, tipe: 4, platform: 5, deadline: 6, link: 7, catatan: 8 };
+    document.getElementById("colBrand").value = cols.brand;
+    document.getElementById("colStatus").value = cols.status;
+    document.getElementById("colPIC").value = cols.pic;
+    document.getElementById("colTipe").value = cols.tipe;
+    document.getElementById("colPlatform").value = cols.platform;
+    document.getElementById("colDeadline").value = cols.deadline;
+    document.getElementById("colLink").value = cols.link;
+    document.getElementById("colCatatan").value = cols.catatan;
+    
+    refreshMappingDropdowns("mainMappingContainer");
+    
+    document.getElementById("adminStatusMendesak").value = masterConfig.systemStatusMendesak || 'mendesak';
+    document.getElementById("adminStatusTerlambat").value = masterConfig.systemStatusTerlambat || 'terlambat';
+
+    populateAdminList("adminListBrands", masterConfig.brands);
+    populateAdminList("adminListPICs", masterConfig.pics);
+    populateAdminList("adminListTipes", masterConfig.tipes);
+    populateAdminList("adminListPlatforms", masterConfig.platforms);
+    
+    document.getElementById("adminListUserStatuses").innerHTML = '';
+    const userStatuses = masterConfig.userStatuses && masterConfig.userStatuses.length > 0 ? masterConfig.userStatuses : [
+        { name: "TO-DO", role: "to-do" },
+        { name: "ON-PROGRESS", role: "on-progress" },
+        { name: "SELESAI", role: "selesai" }
+    ];
+    userStatuses.forEach(s => addAdminStatusInput("adminListUserStatuses", s));
+
+    if (masterConfig.spreadsheetUrl) {
+        loadSheetNames(null, 'adminSheetName', 'adminSSUrl', masterConfig.sheetName);
+    }
+    validateAdminSaveButton();
+}
+
+function tutupAdmin() {
+    document.getElementById("adminModal").classList.remove("active");
+    document.getElementById("searchInput").value = "";
+}
+
+function toggleMigrationView() {
+    const migView = document.getElementById("adminMigrationView");
+    const setView = document.getElementById("adminSettingsView");
+    if (migView.style.display === "none") {
+        migView.style.display = "block";
+        setView.style.display = "none";
+        ['Brand', 'Status', 'PIC', 'Tipe', 'Platform', 'Deadline', 'Link', 'Catatan'].forEach(col => {
+            document.getElementById('mCol' + col).value = document.getElementById('col' + col).value;
+        });
+        refreshMappingDropdowns("migMappingContainer");
+    } else {
+        migView.style.display = "none";
+        setView.style.display = "block";
+    }
+}
+
+function addAdminListInput(containerId, value = '') {
+    const container = document.getElementById(containerId);
+    const div = document.createElement('div');
+    div.className = 'dynamic-select-row';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = value;
+    input.oninput = validateAdminSaveButton;
+    
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn-remove-item';
+    btn.innerHTML = '✕';
+    btn.onclick = () => {
+        if (container.children.length > 1) { div.remove(); validateAdminSaveButton(); }
+        else { showToast('Peringatan', 'Minimal harus ada 1 pilihan.', 'error'); }
+    };
+    
+    div.appendChild(input);
+    div.appendChild(btn);
+    container.appendChild(div);
+    validateAdminSaveButton();
+}
+
+function addAdminStatusInput(containerId, statusObj) {
+    const container = document.getElementById(containerId);
+    const div = document.createElement('div');
+    div.className = 'dynamic-select-row';
+    
+    const nameVal = typeof statusObj === 'string' ? statusObj.toUpperCase() : (statusObj ? statusObj.name.toUpperCase() : '');
+    let roleVal = 'on-progress';
+    if (statusObj && statusObj.role) roleVal = statusObj.role.toLowerCase();
+
+    const inputName = document.createElement('input');
+    inputName.type = 'text';
+    inputName.value = nameVal;
+    inputName.placeholder = 'NAMA STATUS';
+    inputName.style.flex = '1';
+    inputName.oninput = function() { this.value = this.value.toUpperCase(); validateAdminSaveButton(); };
+
+    const selectRole = document.createElement('select');
+    selectRole.style.flex = '1';
+    selectRole.innerHTML = `
+        <option value="to-do" ${roleVal === 'to-do' ? 'selected' : ''}>Sifat: To-Do</option>
+        <option value="on-progress" ${roleVal === 'on-progress' ? 'selected' : ''}>Sifat: On-Progress (Countdown)</option>
+        <option value="selesai" ${roleVal === 'selesai' ? 'selected' : ''}>Sifat: Selesai</option>
+        <option value="keterangan" ${roleVal === 'keterangan' ? 'selected' : ''}>Sifat: Keterangan (Wajib Catatan)</option>
+    `;
+    selectRole.onchange = validateAdminSaveButton;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn-remove-item';
+    btn.innerHTML = '✕';
+    btn.onclick = () => {
+        if (container.children.length > 1) { div.remove(); validateAdminSaveButton(); }
+        else { showToast('Peringatan', 'Minimal harus ada 1 pilihan.', 'error'); }
+    };
+
+    div.appendChild(inputName);
+    div.appendChild(selectRole);
+    div.appendChild(btn);
+    container.appendChild(div);
+    validateAdminSaveButton();
+}
+
+function populateAdminList(containerId, items) {
+    document.getElementById(containerId).innerHTML = '';
+    (items || []).forEach(item => addAdminListInput(containerId, item));
+    if (!items || items.length === 0) addAdminListInput(containerId);
+}
+
+async function loadSheetNames(event, selectId, urlInputId, selectedSheet = '') {
+    const url = document.getElementById(urlInputId).value;
+    if (!url) return showToast('Gagal', 'URL Spreadsheet kosong', 'error');
+    
+    if (event) event.target.innerText = "Loading...";
+    const res = await fetchAPI('getSheets&url=' + encodeURIComponent(url));
+    if (event) event.target.innerText = "Load";
+    
+    if (res && res.status === 'success') {
+        const select = document.getElementById(selectId);
+        select.innerHTML = '';
+        res.sheets.forEach(sheet => {
+            select.innerHTML += `<option value="${sheet}" ${sheet === selectedSheet ? 'selected' : ''}>${sheet}</option>`;
+        });
+        
+        if (urlInputId === 'adminSSUrl') {
+            document.getElementById('adminSSUrlDisplay').value = res.ssName;
+            document.getElementById('adminSSUrlDisplay').style.color = 'var(--glow-pj)';
+            document.getElementById('adminSSUrlDisplay').setAttribute('data-modified', 'false');
+        }
+        if (event) showToast('Sukses', 'Sheet berhasil di-load.', 'success');
+        validateAdminSaveButton();
+    } else {
+        if (event) showToast('Gagal', 'URL tidak valid atau tidak ada akses.', 'error');
+    }
+}
+
+function validateAdminSaveButton() {
+    const btn = document.getElementById("btnSaveAdminConfig");
+    if (!btn) return;
+    
+    const url = document.getElementById("adminSSUrl").value.trim();
+    const sheet = document.getElementById("adminSheetName").value.trim();
+    const row = parseInt(document.getElementById("adminStartRow").value);
+    
+    if (!url || !sheet || isNaN(row) || row < 2) btn.disabled = true;
+    else btn.disabled = false;
+}
+
+function buildConfigPayload(isMigrasi = false) {
+    const prefix = isMigrasi ? 'mig' : 'admin';
+    const colPrefix = isMigrasi ? 'mCol' : 'col';
+    
+    const getList = (id) => Array.from(document.getElementById(id).querySelectorAll('input')).map(el => el.value.trim()).filter(Boolean);
+    const getStatuses = () => Array.from(document.getElementById('adminListUserStatuses').querySelectorAll('.dynamic-select-row')).map(row => {
+        const name = row.querySelector('input').value.trim().toUpperCase();
+        const role = row.querySelector('select').value;
+        return name ? { name, role } : null;
+    }).filter(Boolean);
+
+    return {
+        spreadsheetUrl: document.getElementById(prefix + 'SSUrl').value.trim(),
+        sheetName: document.getElementById(prefix + 'SheetName').value.trim(),
+        startRow: Math.max(parseInt(document.getElementById(prefix + 'StartRow').value) || 2, 2),
+        columns: {
+            brand: parseInt(document.getElementById(colPrefix + 'Brand').value) || 1,
+            status: parseInt(document.getElementById(colPrefix + 'Status').value) || 2,
+            pic: parseInt(document.getElementById(colPrefix + 'PIC').value) || 3,
+            tipe: parseInt(document.getElementById(colPrefix + 'Tipe').value) || 4,
+            platform: parseInt(document.getElementById(colPrefix + 'Platform').value) || 5,
+            deadline: parseInt(document.getElementById(colPrefix + 'Deadline').value) || 6,
+            link: parseInt(document.getElementById(colPrefix + 'Link').value) || 7,
+            catatan: parseInt(document.getElementById(colPrefix + 'Catatan').value) || 8
+        },
+        brands: getList('adminListBrands'),
+        systemStatusMendesak: document.getElementById('adminStatusMendesak').value.trim() || 'mendesak',
+        systemStatusTerlambat: document.getElementById('adminStatusTerlambat').value.trim() || 'terlambat',
+        userStatuses: getStatuses(),
+        pics: getList('adminListPICs'),
+        tipes: getList('adminListTipes'),
+        platforms: getList('adminListPlatforms')
+    };
+}
+
+async function saveAdminConfig(event) {
+    const btn = event.target;
+    btn.innerText = "Menyimpan...";
+    const config = buildConfigPayload(false);
+    
+    if (!config.spreadsheetUrl || !config.sheetName) {
+        validateAdminSaveButton();
+        return showToast('Gagal', 'Lengkapi seluruh field wajib', 'error');
+    }
+    
+    const res = await fetchAPI('saveConfig', { config: config });
+    btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Simpan Config`;
+    
+    if (res && res.status === 'success') {
+        masterConfig = config;
+        showToast('Berhasil', 'Konfigurasi diperbarui', 'success');
+        tutupAdmin();
+        pollData();
+    }
+}
+
+async function jalankanMigrasi(event) {
+    showCustomConfirm('Anda yakin ingin migrasi? Data akan disalin ke Spreadsheet baru.', async () => {
+        const btn = event.target;
+        btn.innerText = 'Memigrasi...';
+        const config = buildConfigPayload(true);
+        
+        if (!config.spreadsheetUrl || !config.sheetName) {
+            btn.innerText = 'Jalankan Migrasi';
+            return showToast('Gagal', 'Lengkapi Link & Sheet Tujuan', 'error');
+        }
+        
+        const res = await fetchAPI('migrateData', { config: config, deleteOld: false });
+        btn.innerText = 'Jalankan Migrasi';
+        
+        if (res && res.status === 'success') {
+            masterConfig = config;
+            showToast('Migrasi Berhasil', 'Data berhasil dipindahkan.', 'success');
+            tutupAdmin();
+            pollData();
+        } else {
+            showToast('Gagal Migrasi', res ? res.message : 'Kesalahan server', 'error');
+        }
+    });
+}
+
+// ==========================================
+// TOAST, MODAL & UTILITIES
+// ==========================================
+function showToast(title, message, type = 'success') {
+    const container = document.getElementById("toastContainer");
+    const toast = document.createElement("div");
+    toast.className = "toast-alert " + type;
+    toast.innerHTML = `<div class="toast-content"><span class="toast-title">${title}</span><span class="toast-desc">${message}</span></div>`;
+    container.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('show'));
+    setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3000);
+}
+
+function showCustomConfirm(msg, callback) {
+    document.getElementById("customConfirmMessage").innerText = msg;
+    confirmActionCallback = callback;
+    document.getElementById("customConfirmModal").classList.add("active");
+}
+
+function tutupCustomConfirm() {
+    document.getElementById("customConfirmModal").classList.remove("active");
+    confirmActionCallback = null;
+}
+
+document.getElementById("btnConfirmAction").addEventListener("click", () => {
+    if (confirmActionCallback) confirmActionCallback();
+    tutupCustomConfirm();
+});
+
+function bukaModalFilter() { document.getElementById("filterModal").classList.add("active"); }
+function tutupModalFilter() { document.getElementById("filterModal").classList.remove("active"); }
+function updateFilterOptions() {}
+function toggleDownloadMenu(e) { document.getElementById("downloadMenu").classList.toggle("show"); }
+
+window.addEventListener('load', () => {
+    initApp();
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(e => console.log('SW', e));
+});
+
+
+// ==========================================
+// FITUR EXPORT / DOWNLOAD (CSV & EXCEL)
+// ==========================================
+function formatTanggalMurni(dateString) {
+    if (!dateString) return '-';
+    const d = new Date(dateString.replace(' ', 'T'));
+    if (isNaN(d.getTime())) return '-';
+    const day = d.getDate();
+    const month = d.toLocaleDateString('id-ID', { month: 'long' });
+    const year = d.getFullYear();
+    return day + ' ' + month + ' ' + year;
+}
+
+function exportToCSV(plans) {
+    const headers = ['Brand', 'Status', 'PIC', 'Tipe', 'Platform', 'Deadline', 'Link', 'Catatan'];
+    let csvContent = headers.join(',') + '\n';
+    plans.forEach(plan => {
+        let row = [
+            '"' + (plan.brand || []).join(', ') + '"',
+            '"' + plan.status + '"',
+            '"' + (plan.penanggungJawab || []).join(', ') + '"',
+            '"' + plan.tipeKonten + '"',
+            '"' + (plan.platform || []).join(', ') + '"',
+            '"' + formatTanggalMurni(plan.deadline) + '"',
+            '"' + (plan.link || '') + '"',
+            '"' + (plan.catatan || '').replace(/"/g, '""') + '"'
+        ];
+        csvContent += row.join(',') + '\n';
+    });
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'KontenPlan_' + new Date().getTime() + '.csv');
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+async function exportToExcel(plans) {
+    if (typeof ExcelJS === 'undefined') return showToast('Gagal', 'Library Excel gagal dimuat, cek koneksi internet.', 'error');
+    showToast('Proses', 'Mempersiapkan File Excel...', 'success');
+    
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Data Konten');
+    worksheet.columns = [
+        { header: 'Brand', key: 'brand', width: 25 },
+        { header: 'Status', key: 'status', width: 20 },
+        { header: 'PIC', key: 'pic', width: 20 },
+        { header: 'Tipe', key: 'tipe', width: 22 },
+        { header: 'Platform', key: 'platform', width: 22 },
+        { header: 'Deadline', key: 'deadline', width: 25 },
+        { header: 'Link', key: 'link', width: 40 },
+        { header: 'Catatan', key: 'catatan', width: 40 }
+    ];
+
+    worksheet.getRow(1).eachCell(cell => {
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF121826' } };
+        cell.font = { color: { argb: 'FF38BDF8' }, bold: true, size: 12 };
+        cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        cell.border = {
+            top: { style: 'medium', color: { argb: 'FF38BDF8' } },
+            bottom: { style: 'medium', color: { argb: 'FF38BDF8' } },
+            left: { style: 'thin', color: { argb: 'FF38BDF8' } },
+            right: { style: 'thin', color: { argb: 'FF38BDF8' } }
+        };
+    });
+
+    plans.forEach(plan => {
+        worksheet.addRow({
+            brand: (plan.brand || []).join(', '),
+            status: plan.status,
+            pic: (plan.penanggungJawab || []).join(', '),
+            tipe: plan.tipeKonten,
+            platform: (plan.platform || []).join(', '),
+            deadline: formatTanggalMurni(plan.deadline),
+            link: plan.link || '',
+            catatan: plan.catatan || ''
+        });
+    });
+
+    const brandList = masterConfig.brands && masterConfig.brands.length > 0 ? '"' + masterConfig.brands.join(',') + '"' : '';
+    const rawStatuses = (masterConfig.userStatuses || []).map(s => typeof s === 'string' ? s : s.name);
+    const statusList = '"' + [...rawStatuses, masterConfig.systemStatusMendesak || 'mendesak', masterConfig.systemStatusTerlambat || 'terlambat'].join(',') + '"';
+    const picList = masterConfig.pics && masterConfig.pics.length > 0 ? '"' + masterConfig.pics.join(',') + '"' : '';
+    
+    const totalRows = plans.length + 1;
+    for (let i = 2; i <= totalRows; i++) {
+        const row = worksheet.getRow(i);
+        row.eachCell({ includeEmpty: true }, cell => {
+            cell.border = {
+                top: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                left: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                bottom: { style: 'thin', color: { argb: 'FFCCCCCC' } },
+                right: { style: 'thin', color: { argb: 'FFCCCCCC' } }
+            };
+            cell.alignment = { vertical: 'middle', wrapText: true };
+        });
+        
+        if (brandList) worksheet.getCell('A' + i).dataValidation = { type: 'list', allowBlank: true, formulae: [brandList], showErrorMessage: true };
+        if (statusList) worksheet.getCell('B' + i).dataValidation = { type: 'list', allowBlank: true, formulae: [statusList], showErrorMessage: true };
+        if (picList) worksheet.getCell('C' + i).dataValidation = { type: 'list', allowBlank: true, formulae: [picList], showErrorMessage: true };
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'KontenPlan_' + new Date().getTime() + '.xlsx';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+async function triggerDownload(type) {
+    document.getElementById("downloadMenu").classList.remove("show");
+    const plansToDownload = contentPlans.filter(filterLogic);
+    if (plansToDownload.length === 0) return showToast('Gagal', 'Tidak ada data untuk diunduh', 'error');
+    
+    if (type === 'csv') {
+        exportToCSV(plansToDownload);
+    } else {
+        await exportToExcel(plansToDownload);
+    }
+}
