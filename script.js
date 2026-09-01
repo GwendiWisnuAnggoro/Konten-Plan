@@ -848,3 +848,52 @@ async function triggerDownload(type) {
         await exportToExcel(plansToDownload);
     }
 }
+
+
+// ==========================================
+// FITUR PWA (PROGRESSIVE WEB APP)
+// ==========================================
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Mengecek apakah user sebelumnya sudah menutup banner
+    const isDismissed = sessionStorage.getItem('pwa_prompt_dismissed');
+    
+    if (!isDismissed) {
+        // Tampilkan banner setelah sedikit delay agar animasi lebih mulus
+        setTimeout(() => {
+            const banner = document.getElementById("installBanner");
+            if (banner) banner.classList.add("show");
+        }, 1500);
+    }
+});
+
+async function jalankanInstallPWA() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+        tutupBannerPWA();
+    }
+    deferredPrompt = null;
+}
+
+function tutupBannerPWA() {
+    const banner = document.getElementById("installBanner");
+    if (banner) {
+        banner.classList.remove("show");
+        // Simpan sesi agar banner tidak muncul lagi sampai web direfresh total
+        sessionStorage.setItem('pwa_prompt_dismissed', 'true');
+    }
+}
+
+// Mendaftarkan Service Worker saat halaman dimuat
+window.addEventListener('load', () => {
+    initApp();
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(e => console.log('SW Registration failed:', e));
+    }
+});
