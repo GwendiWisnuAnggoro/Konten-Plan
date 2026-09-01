@@ -1,1 +1,304 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HADDOCK</title><link rel="icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png" type="image/png"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#070a13"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png"><script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script><link rel="stylesheet" href="style.css"></head><body><div id="toastContainer" class="toast-container"></div><div id="customConfirmModal" class="modal-overlay" style="z-index:2000"><div class="modal-content" style="max-width:320px;text-align:center;gap:20px;padding:25px 20px;align-items:center"><div style="color:var(--glow-mendesak);display:flex;justify-content:center"><svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div><div id="customConfirmMessage" style="font-size:.95rem;font-weight:500;color:#e2e8f0;line-height:1.5">Apakah Anda yakin?</div><div style="display:flex;gap:12px;justify-content:center;width:100%;margin-top:5px"><button class="btn-cancel" onclick="tutupCustomConfirm()" style="flex:1;padding:10px">Batal</button> <button id="btnConfirmAction" class="btn-save" style="flex:1;padding:10px;background:var(--glow-mendesak);color:#fff;box-shadow:0 0 12px rgba(239,68,68,.4);justify-content:center">Ya, Yakin</button></div></div></div><div id="installBanner" class="pwa-install-banner"><div class="pwa-left-content"><div class="pwa-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></div><div class="pwa-text-box"><span class="pwa-title">Install HADDOCK</span> <span class="pwa-desc">Pasang Sebagai Aplikasi</span></div></div><div class="pwa-actions"><button class="btn-pwa-install" onclick="jalankanInstallPWA()">Install</button> <button class="btn-pwa-close" onclick="tutupBannerPWA()">✕</button></div></div><div class="sticky-top-bar"><div class="sticky-inner"><div class="header-row"><div class="page-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> HADDOCK</div><div class="header-actions"><div class="download-dropdown-wrapper"><button class="btn-download-trigger" onclick="toggleDownloadMenu(event)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Unduh</button><div id="downloadMenu" class="download-menu"><button class="download-item" onclick='triggerDownload("csv")'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg> File CSV (.csv)</button> <button class="download-item" onclick='triggerDownload("xlsx")'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><rect x="8" y="12" width="8" height="6"></rect></svg> File Excel (.xlsx)</button></div></div><button class="btn-filter-trigger" onclick="bukaModalFilter()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Filter</button></div></div><div class="search-box"><svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> <input type="text" id="searchInput" class="search-input" placeholder="Cari Data" oninput="handleSearch()"></div><button class="btn-add-data" onclick="bukaModalTambah()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Tambah Konten Plan</button></div></div><div class="container"><div id="loadingStatus">Sinkronisasi Data...</div><div id="contentPlanList" style="display:flex;flex-direction:column;gap:14px"></div></div><div id="adminModal" class="modal-overlay"><div class="modal-content"><div class="modal-header"><span class="page-title" style="color:var(--glow-pj)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"></path><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="M12 2v2"></path><path d="M12 20v2"></path></svg> DASHBOARD ADMIN </span><button class="btn-close-modal" onclick="tutupAdmin()">✕</button></div><div id="adminSettingsView"><div class="admin-section"><span class="admin-section-title">Database & Spreadsheet Utama</span><div class="form-group"><label>Link Google Spreadsheet</label><div style="display:flex;gap:8px"><input type="text" id="adminSSUrlDisplay" placeholder="https://docs.google.com/spreadsheets/d/..." oninput="handleUrlInput()"> <input type="hidden" id="adminSSUrl"> <button class="btn-save" onclick='loadSheetNames(event,"adminSheetName","adminSSUrl")' style="padding:6px 12px;font-size:.8rem">Load</button></div></div><div class="form-group"><label>Sheet & Baris Mulai (Baris 1 khusus Judul otomatis)</label><div style="display:flex;gap:10px"><select id="adminSheetName" style="flex:2" onchange="validateAdminSaveButton()"><option value="">-- Load Link Dahulu --</option></select> <input type="number" id="adminStartRow" value="2" min="2" style="flex:1" oninput="validateAdminSaveButton()"></div></div><label style="font-size:.75rem;color:var(--text-muted);margin-top:8px">Mapping Kolom Data di Spreadsheet</label><div class="col-mapping-grid" id="mainMappingContainer"><div class="form-group"><label>Kolom Brand</label><select id="colBrand"></select></div><div class="form-group"><label>Kolom Status</label><select id="colStatus"></select></div><div class="form-group"><label>Kolom PIC</label><select id="colPIC"></select></div><div class="form-group"><label>Kolom Tipe</label><select id="colTipe"></select></div><div class="form-group"><label>Kolom Platform</label><select id="colPlatform"></select></div><div class="form-group"><label>Kolom Deadline</label><select id="colDeadline"></select></div><div class="form-group"><label>Kolom Link</label><select id="colLink"></select></div><div class="form-group"><label>Kolom Catatan</label><select id="colCatatan"></select></div></div></div><div class="admin-section"><span class="admin-section-title">Manajemen Master Data</span><div class="form-group"><label>Daftar Brand</label><div id="adminListBrands" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='addAdminListInput("adminListBrands")'>+ Tambah Brand</button></div><div class="form-group" style="margin-top:10px"><label>Status Sistem (Bisa Diubah, Tidak Boleh Kosong)</label><div style="display:flex;gap:8px;margin-bottom:6px"><input type="text" id="adminStatusMendesak" value="mendesak" placeholder="Status Mendesak" oninput="validateAdminSaveButton()"> <input type="text" id="adminStatusTerlambat" value="terlambat" placeholder="Status Terlambat" oninput="validateAdminSaveButton()"></div></div><div class="form-group" style="margin-top:10px"><label>Status Pilihan User (Wajib minimal 1)</label><div id="adminListUserStatuses" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='addAdminStatusInput("adminListUserStatuses")'>+ Tambah Status</button></div><div class="form-group" style="margin-top:10px"><label>Daftar PIC / Penanggung Jawab</label><div id="adminListPICs" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='addAdminListInput("adminListPICs")'>+ Tambah PIC</button></div><div class="form-group" style="margin-top:10px"><label>Daftar Tipe Konten</label><div id="adminListTipes" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='addAdminListInput("adminListTipes")'>+ Tambah Tipe</button></div><div class="form-group" style="margin-top:10px"><label>Daftar Platform Sosmed</label><div id="adminListPlatforms" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='addAdminListInput("adminListPlatforms")'>+ Tambah Platform</button></div></div><button class="btn-migrate-trigger" onclick="toggleMigrationView()">🔄 Migrasi Ke Spreadsheet Baru</button><div class="modal-actions" style="margin-top:15px"><button class="btn-cancel" onclick="tutupAdmin()">Tutup</button> <button class="btn-save" id="btnSaveAdminConfig" onclick="saveAdminConfig(event)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Simpan Config</button></div></div><div id="adminMigrationView" style="display:none"><div class="admin-section" style="border-color:var(--glow-mendesak)"><span class="admin-section-title" style="color:var(--glow-mendesak)">Migrasi Database Ke Spreadsheet Baru</span><p style="font-size:.75rem;color:var(--text-muted);margin-bottom:10px">Menyalin seluruh data ke Spreadsheet baru berdasarkan pemetaan kolom di bawah.</p><div class="form-group"><label>Link Google Spreadsheet BARU</label><div style="display:flex;gap:8px"><input type="url" id="migSSUrl" placeholder="https://docs.google.com/spreadsheets/d/..."> <button class="btn-save" onclick='loadSheetNames(event,"migSheetName","migSSUrl")' style="padding:6px 12px;font-size:.8rem">Load</button></div></div><div class="form-group"><label>Sheet Tujuan & Baris Mulai</label><div style="display:flex;gap:10px"><select id="migSheetName" style="flex:2"><option value="">-- Load Link Dahulu --</option></select> <input type="number" id="migStartRow" value="2" min="2" style="flex:1"></div></div><label style="font-size:.75rem;color:var(--text-muted);margin-top:8px">Mapping Kolom Baru</label><div class="col-mapping-grid" id="migMappingContainer"><div class="form-group"><label>Kol. Brand</label><select id="mColBrand"></select></div><div class="form-group"><label>Kol. Status</label><select id="mColStatus"></select></div><div class="form-group"><label>Kol. PIC</label><select id="mColPIC"></select></div><div class="form-group"><label>Kol. Tipe</label><select id="mColTipe"></select></div><div class="form-group"><label>Kol. Platform</label><select id="mColPlatform"></select></div><div class="form-group"><label>Kol. Deadline</label><select id="mColDeadline"></select></div><div class="form-group"><label>Kol. Link</label><select id="mColLink"></select></div><div class="form-group"><label>Kol. Catatan</label><select id="mColCatatan"></select></div></div></div><div class="modal-actions" style="margin-top:15px"><button class="btn-cancel" onclick="toggleMigrationView()">Kembali</button> <button class="btn-save" style="background:var(--glow-mendesak);color:#fff" onclick="jalankanMigrasi(event)">Jalankan Migrasi</button></div></div></div></div><div id="filterModal" class="modal-overlay"><div class="modal-content"><div class="modal-header"><span>Filter Konten</span> <button class="btn-close-modal" onclick="tutupModalFilter()">✕</button></div><div class="filter-modal-body"><div class="filter-row-main"><div class="filter-section-col"><span class="filter-section-title">Status</span><div class="form-group"><select id="filterStatus"><option value="ALL">Semua</option></select></div></div><div class="filter-section-col"><span class="filter-section-title">Brand</span><div class="form-group"><select id="filterBrand"><option value="ALL">Semua</option></select></div></div><div class="filter-section-col"><span class="filter-section-title">Waktu</span><div class="form-group"><select id="filterTimeMode" onchange="handleTimeModeChange()"><option value="ALL">Semua</option><option value="today">Hari Ini</option><option value="this_week">Minggu Ini</option><option value="specific_date">Tgl Spesifik</option><option value="specific_year">Tahun</option><option value="specific_hour">Jam</option><option value="custom_range">Rentang</option></select></div></div></div><div id="colTimeDetail" class="filter-detail-row" style="display:none"><span class="filter-section-title">Detail Waktu Terpilih</span><div class="form-group" id="groupDate" style="display:none"><input type="date" id="filterSpecificDate"></div><div class="form-group" id="groupYear" style="display:none"><input type="number" id="filterSpecificYear" placeholder="Masukkan Tahun (Contoh: 2026)"></div><div class="form-group" id="groupHour" style="display:none"><input type="number" id="filterSpecificHour" min="0" max="23" placeholder="Masukkan Jam (0 - 23)"></div><div id="groupRange" class="filter-range-grid" style="display:none"><div class="filter-range-field"><span>Dari Tanggal:</span> <input type="date" id="filterRangeStart"></div><div class="filter-range-field"><span>Sampai Tanggal:</span> <input type="date" id="filterRangeEnd"></div></div></div></div><div class="modal-actions"><button class="btn-reset" onclick="resetFilters()">Reset Filter</button> <button class="btn-apply" onclick="terapkanFilter()">Terapkan</button></div></div></div><div id="formModal" class="modal-overlay"><div class="modal-content"><div class="modal-header"><span id="modalFormTitle">Tambah Konten Plan</span> <button class="btn-close-modal" onclick="tutupModalForm()">✕</button></div><input type="hidden" id="formId"><div class="form-group"><label>Brand * (Bisa pilih lebih dari 1)</label><div id="brandSelectContainer" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='tambahDropdown("brandSelectContainer",masterConfig.brands)'>+ Tambah Brand</button></div><div class="form-group"><label>Status</label> <select id="formStatus" onchange="handleFormStatusChange()"></select></div><div class="form-group"><label>Penanggung Jawab (PIC)</label><div id="picSelectContainer" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='tambahDropdown("picSelectContainer",masterConfig.pics)'>+ Tambah PIC</button></div><div class="form-group"><label>Tipe Konten</label> <select id="formTipeKonten"></select></div><div class="form-group"><label>Platform Sosial Media (Bisa pilih lebih dari 1)</label><div id="platformSelectContainer" class="dynamic-list-container"></div><button type="button" class="btn-add-item" onclick='tambahDropdown("platformSelectContainer",masterConfig.platforms)'>+ Tambah Platform</button></div><div class="form-group" id="groupFormDeadline"><label>Deadline</label> <input type="datetime-local" id="formDeadline"></div><div class="form-group" id="groupFormLink" style="display:none"><label>Link Hasil Konten * <span style="color:#ef4444">(Wajib diisi saat Selesai)</span></label> <textarea id="formLink" placeholder="https://instagram.com/..." rows="2" oninput="validateSaveButton()"></textarea></div><div class="form-group" id="groupFormCatatan" style="display:none"><label>Catatan / Kendala <span style="color:var(--text-muted)">(Opsional)</span></label> <textarea id="formCatatan" placeholder="Tulis kendala produksi..."></textarea></div><div class="modal-actions"><button class="btn-cancel" onclick="tutupModalForm()">Batal</button> <button class="btn-save" id="btnSubmitForm" onclick="simpanFormData()">Simpan</button></div></div></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HADDOCK</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png" type="image/png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#070a13">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/906/906334.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <div id="customConfirmModal" class="modal-overlay" style="z-index:2000">
+        <div class="modal-content" style="max-width:320px;text-align:center;gap:20px;padding:25px 20px;align-items:center">
+            <div style="color:var(--glow-mendesak);display:flex;justify-content:center">
+                <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <div id="customConfirmMessage" style="font-size:.95rem;font-weight:500;color:#e2e8f0;line-height:1.5">Apakah Anda yakin?</div>
+            <div style="display:flex;gap:12px;justify-content:center;width:100%;margin-top:5px">
+                <button class="btn-cancel" onclick="tutupCustomConfirm()" style="flex:1;padding:10px">Batal</button> 
+                <button id="btnConfirmAction" class="btn-save" style="flex:1;padding:10px;background:var(--glow-mendesak);color:#fff;box-shadow:0 0 12px rgba(239,68,68,.4);justify-content:center">Ya, Yakin</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="installBanner" class="pwa-install-banner">
+        <div class="pwa-left-content">
+            <div class="pwa-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </div>
+            <div class="pwa-text-box">
+                <span class="pwa-title">Install HADDOCK</span> 
+                <span class="pwa-desc">Pasang Sebagai Aplikasi</span>
+            </div>
+        </div>
+        <div class="pwa-actions">
+            <button class="btn-pwa-install" onclick="jalankanInstallPWA()">Install</button> 
+            <button class="btn-pwa-close" onclick="tutupBannerPWA()">✕</button>
+        </div>
+    </div>
+
+    <div class="sticky-top-bar">
+        <div class="sticky-inner">
+            <div class="header-row">
+                <div class="page-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> HADDOCK
+                </div>
+                <div class="header-actions">
+                    <div class="download-dropdown-wrapper">
+                        <button class="btn-download-trigger" onclick="toggleDownloadMenu(event)">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Unduh
+                        </button>
+                        <div id="downloadMenu" class="download-menu">
+                            <button class="download-item" onclick='triggerDownload("csv")'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg> File CSV (.csv)</button> 
+                            <button class="download-item" onclick='triggerDownload("xlsx")'><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><rect x="8" y="12" width="8" height="6"></rect></svg> File Excel (.xlsx)</button>
+                        </div>
+                    </div>
+                    <button class="btn-filter-trigger" onclick="bukaModalFilter()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Filter</button>
+                </div>
+            </div>
+            <div class="search-box">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> 
+                <input type="text" id="searchInput" class="search-input" placeholder="Cari Data" oninput="handleSearch()">
+            </div>
+            <button class="btn-add-data" onclick="bukaModalTambah()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Tambah Konten Plan
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="loadingStatus">Sinkronisasi Data...</div>
+        <div id="contentPlanList" style="display:flex;flex-direction:column;gap:14px"></div>
+    </div>
+
+    <!-- Modal Admin -->
+    <div id="adminModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="page-title" style="color:var(--glow-pj)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"></path><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path d="M12 2v2"></path><path d="M12 20v2"></path></svg> DASHBOARD ADMIN </span>
+                <button class="btn-close-modal" onclick="tutupAdmin()">✕</button>
+            </div>
+            <div id="adminSettingsView">
+                <div class="admin-section">
+                    <span class="admin-section-title">Database & Spreadsheet Utama</span>
+                    <div class="form-group">
+                        <label>Link Google Spreadsheet</label>
+                        <div style="display:flex;gap:8px">
+                            <input type="text" id="adminSSUrlDisplay" placeholder="https://docs.google.com/spreadsheets/d/..." oninput="handleUrlInput()"> 
+                            <input type="hidden" id="adminSSUrl"> 
+                            <button class="btn-save" onclick='loadSheetNames(event,"adminSheetName","adminSSUrl")' style="padding:6px 12px;font-size:.8rem">Load</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Sheet & Baris Mulai (Baris 1 khusus Judul otomatis)</label>
+                        <div style="display:flex;gap:10px">
+                            <select id="adminSheetName" style="flex:2" onchange="validateAdminSaveButton()"><option value="">-- Load Link Dahulu --</option></select> 
+                            <input type="number" id="adminStartRow" value="2" min="2" style="flex:1" oninput="validateAdminSaveButton()">
+                        </div>
+                    </div>
+                    <label style="font-size:.75rem;color:var(--text-muted);margin-top:8px">Mapping Kolom Data di Spreadsheet</label>
+                    <div class="col-mapping-grid" id="mainMappingContainer">
+                        <div class="form-group"><label>Kolom Brand</label><select id="colBrand"></select></div>
+                        <div class="form-group"><label>Kolom Status</label><select id="colStatus"></select></div>
+                        <div class="form-group"><label>Kolom PIC</label><select id="colPIC"></select></div>
+                        <div class="form-group"><label>Kolom Tipe</label><select id="colTipe"></select></div>
+                        <div class="form-group"><label>Kolom Platform</label><select id="colPlatform"></select></div>
+                        <div class="form-group"><label>Kolom Deadline</label><select id="colDeadline"></select></div>
+                        <div class="form-group"><label>Kolom Link</label><select id="colLink"></select></div>
+                        <div class="form-group"><label>Kolom Catatan</label><select id="colCatatan"></select></div>
+                    </div>
+                </div>
+                <div class="admin-section">
+                    <span class="admin-section-title">Manajemen Master Data</span>
+                    <div class="form-group">
+                        <label>Daftar Brand</label>
+                        <div id="adminListBrands" class="dynamic-list-container"></div>
+                        <button type="button" class="btn-add-item" onclick='addAdminListInput("adminListBrands")'>+ Tambah Brand</button>
+                    </div>
+                    <div class="form-group" style="margin-top:10px">
+                        <label>Status Sistem (Bisa Diubah, Tidak Boleh Kosong)</label>
+                        <div style="display:flex;gap:8px;margin-bottom:6px">
+                            <input type="text" id="adminStatusMendesak" value="mendesak" placeholder="Status Mendesak" oninput="validateAdminSaveButton()"> 
+                            <input type="text" id="adminStatusTerlambat" value="terlambat" placeholder="Status Terlambat" oninput="validateAdminSaveButton()">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:10px">
+                        <label>Status Pilihan User (Wajib minimal 1)</label>
+                        <div id="adminListUserStatuses" class="dynamic-list-container"></div>
+                        <button type="button" class="btn-add-item" onclick='addAdminStatusInput("adminListUserStatuses")'>+ Tambah Status</button>
+                    </div>
+                    <div class="form-group" style="margin-top:10px">
+                        <label>Daftar PIC / Penanggung Jawab</label>
+                        <div id="adminListPICs" class="dynamic-list-container"></div>
+                        <button type="button" class="btn-add-item" onclick='addAdminListInput("adminListPICs")'>+ Tambah PIC</button>
+                    </div>
+                    <div class="form-group" style="margin-top:10px">
+                        <label>Daftar Tipe Konten</label>
+                        <div id="adminListTipes" class="dynamic-list-container"></div>
+                        <button type="button" class="btn-add-item" onclick='addAdminListInput("adminListTipes")'>+ Tambah Tipe</button>
+                    </div>
+                    <div class="form-group" style="margin-top:10px">
+                        <label>Daftar Platform Sosmed</label>
+                        <div id="adminListPlatforms" class="dynamic-list-container"></div>
+                        <button type="button" class="btn-add-item" onclick='addAdminListInput("adminListPlatforms")'>+ Tambah Platform</button>
+                    </div>
+                </div>
+                <button class="btn-migrate-trigger" onclick="toggleMigrationView()">🔄 Migrasi Ke Spreadsheet Baru</button>
+                <div class="modal-actions" style="margin-top:15px">
+                    <button class="btn-cancel" onclick="tutupAdmin()">Tutup</button> 
+                    <button class="btn-save" id="btnSaveAdminConfig" onclick="saveAdminConfig(event)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> Simpan Config</button>
+                </div>
+            </div>
+            <div id="adminMigrationView" style="display:none">
+                <div class="admin-section" style="border-color:var(--glow-mendesak)">
+                    <span class="admin-section-title" style="color:var(--glow-mendesak)">Migrasi Database Ke Spreadsheet Baru</span>
+                    <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:10px">Menyalin seluruh data ke Spreadsheet baru berdasarkan pemetaan kolom di bawah.</p>
+                    <div class="form-group">
+                        <label>Link Google Spreadsheet BARU</label>
+                        <div style="display:flex;gap:8px">
+                            <input type="url" id="migSSUrl" placeholder="https://docs.google.com/spreadsheets/d/..."> 
+                            <button class="btn-save" onclick='loadSheetNames(event,"migSheetName","migSSUrl")' style="padding:6px 12px;font-size:.8rem">Load</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Sheet Tujuan & Baris Mulai</label>
+                        <div style="display:flex;gap:10px">
+                            <select id="migSheetName" style="flex:2"><option value="">-- Load Link Dahulu --</option></select> 
+                            <input type="number" id="migStartRow" value="2" min="2" style="flex:1">
+                        </div>
+                    </div>
+                    <label style="font-size:.75rem;color:var(--text-muted);margin-top:8px">Mapping Kolom Baru</label>
+                    <div class="col-mapping-grid" id="migMappingContainer">
+                        <div class="form-group"><label>Kol. Brand</label><select id="mColBrand"></select></div>
+                        <div class="form-group"><label>Kol. Status</label><select id="mColStatus"></select></div>
+                        <div class="form-group"><label>Kol. PIC</label><select id="mColPIC"></select></div>
+                        <div class="form-group"><label>Kol. Tipe</label><select id="mColTipe"></select></div>
+                        <div class="form-group"><label>Kol. Platform</label><select id="mColPlatform"></select></div>
+                        <div class="form-group"><label>Kol. Deadline</label><select id="mColDeadline"></select></div>
+                        <div class="form-group"><label>Kol. Link</label><select id="mColLink"></select></div>
+                        <div class="form-group"><label>Kol. Catatan</label><select id="mColCatatan"></select></div>
+                    </div>
+                </div>
+                <div class="modal-actions" style="margin-top:15px">
+                    <button class="btn-cancel" onclick="toggleMigrationView()">Kembali</button> 
+                    <button class="btn-save" style="background:var(--glow-mendesak);color:#fff" onclick="jalankanMigrasi(event)">Jalankan Migrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Filter -->
+    <div id="filterModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Filter Konten</span> 
+                <button class="btn-close-modal" onclick="tutupModalFilter()">✕</button>
+            </div>
+            <div class="filter-modal-body">
+                <div class="filter-row-main">
+                    <div class="filter-section-col">
+                        <span class="filter-section-title">Status</span>
+                        <div class="form-group">
+                            <select id="filterStatus"><option value="ALL">Semua</option></select>
+                        </div>
+                    </div>
+                    <div class="filter-section-col">
+                        <span class="filter-section-title">Brand</span>
+                        <div class="form-group">
+                            <select id="filterBrand"><option value="ALL">Semua</option></select>
+                        </div>
+                    </div>
+                    <div class="filter-section-col">
+                        <span class="filter-section-title">Waktu</span>
+                        <div class="form-group">
+                            <select id="filterTimeMode" onchange="handleTimeModeChange()">
+                                <option value="ALL">Semua</option>
+                                <option value="today">Hari Ini</option>
+                                <option value="this_week">Minggu Ini</option>
+                                <option value="specific_date">Tgl Spesifik</option>
+                                <option value="specific_year">Tahun</option>
+                                <option value="specific_hour">Jam</option>
+                                <option value="custom_range">Rentang</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="colTimeDetail" class="filter-detail-row" style="display:none">
+                    <span class="filter-section-title">Detail Waktu Terpilih</span>
+                    <div class="form-group" id="groupDate" style="display:none"><input type="date" id="filterSpecificDate"></div>
+                    <div class="form-group" id="groupYear" style="display:none"><input type="number" id="filterSpecificYear" placeholder="Masukkan Tahun (Contoh: 2026)"></div>
+                    <div class="form-group" id="groupHour" style="display:none"><input type="number" id="filterSpecificHour" min="0" max="23" placeholder="Masukkan Jam (0 - 23)"></div>
+                    <div id="groupRange" class="filter-range-grid" style="display:none">
+                        <div class="filter-range-field"><span>Dari Tanggal:</span> <input type="date" id="filterRangeStart"></div>
+                        <div class="filter-range-field"><span>Sampai Tanggal:</span> <input type="date" id="filterRangeEnd"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-reset" onclick="resetFilters()">Reset Filter</button> 
+                <button class="btn-apply" onclick="terapkanFilter()">Terapkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Form -->
+    <div id="formModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="modalFormTitle">Tambah Konten Plan</span> 
+                <button class="btn-close-modal" onclick="tutupModalForm()">✕</button>
+            </div>
+            <input type="hidden" id="formId">
+            <div class="form-group">
+                <label>Brand * (Bisa pilih lebih dari 1)</label>
+                <div id="brandSelectContainer" class="dynamic-list-container"></div>
+                <button type="button" class="btn-add-item" onclick='tambahDropdown("brandSelectContainer",masterConfig.brands)'>+ Tambah Brand</button>
+            </div>
+            <div class="form-group">
+                <label>Status</label> 
+                <select id="formStatus" onchange="handleFormStatusChange()"></select>
+            </div>
+            <div class="form-group">
+                <label>Penanggung Jawab (PIC)</label>
+                <div id="picSelectContainer" class="dynamic-list-container"></div>
+                <button type="button" class="btn-add-item" onclick='tambahDropdown("picSelectContainer",masterConfig.pics)'>+ Tambah PIC</button>
+            </div>
+            <div class="form-group">
+                <label>Tipe Konten</label> 
+                <select id="formTipeKonten" onchange="validateSaveButton()"></select>
+            </div>
+            <div class="form-group">
+                <label>Platform Sosial Media (Bisa pilih lebih dari 1)</label>
+                <div id="platformSelectContainer" class="dynamic-list-container"></div>
+                <button type="button" class="btn-add-item" onclick='tambahDropdown("platformSelectContainer",masterConfig.platforms)'>+ Tambah Platform</button>
+            </div>
+            <div class="form-group" id="groupFormDeadline">
+                <label>Deadline</label> 
+                <input type="datetime-local" id="formDeadline">
+            </div>
+            <div class="form-group" id="groupFormLink" style="display:none">
+                <label>Link Hasil Konten * <span style="color:#ef4444">(Wajib diisi saat Selesai)</span></label> 
+                <textarea id="formLink" placeholder="https://instagram.com/..." rows="2" oninput="validateSaveButton()"></textarea>
+            </div>
+            <div class="form-group" id="groupFormCatatan" style="display:none">
+                <label id="labelFormCatatan">Catatan / Kendala <span style="color:#ef4444">(Wajib diisi)</span></label> 
+                <textarea id="formCatatan" placeholder="Tulis catatan di sini..." oninput="validateSaveButton()"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="tutupModalForm()">Batal</button> 
+                <button class="btn-save" id="btnSubmitForm" onclick="simpanFormData()">Simpan</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
